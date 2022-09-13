@@ -19,10 +19,10 @@ class CreateTopicsTable extends Migration
             $table->text('body');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('view_count');
+            $table->unsignedBigInteger('view_count')->default(0);
             $table->unsignedBigInteger('order')->default(0);
-            $table->text('excerpt')->nullbale();
-            $table->string('slug')->nullbale();
+            $table->text('excerpt')->nullable();
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }
