@@ -13,3 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', 'PagesController@root')->name('root');
+Route::resource('topics', 'TopicsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show');

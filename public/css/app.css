@@ -21349,3 +21349,8 @@ body {
   border: 0;
   border-top: 1px solid #979da0;
 }
+
+/* Add container and footer space */
+#app > div.container {
+  margin-bottom: 100px;
+}
