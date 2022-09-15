@@ -21289,6 +21289,9 @@ body {
   border-bottom: 1px solid #e8e8e8;
   margin-bottom: 40px;
   margin-top: 0px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 /* Sticky footer styles */
@@ -21353,4 +21356,42 @@ body {
 /* Add container and footer space */
 #app > div.container {
   margin-bottom: 100px;
+}
+
+.top_button p {
+  position: fixed;
+  bottom: 30px;
+  right: 53px;
+  display: block;
+}
+
+.top_button a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 58px;
+  background-color: rgba(213, 208, 208, 0.65);
+  box-shadow: 0 2px 12px rgba(159, 149, 149, 0.2);
+  border-radius: 4px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  padding-top: 12px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.top_button a::after {
+  display: block;
+  position: absolute;
+  top: 14px;
+  left: 20px;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg) translateY(-50%);
+  content: "";
 }
