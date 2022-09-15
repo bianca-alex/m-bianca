@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'PagesController@root')->name('root');
+Route::get('test','TestController@index');
+
+
+Route::get('/', 'TopicsController@index')->name('root');
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show');
