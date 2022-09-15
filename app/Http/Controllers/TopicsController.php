@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Topic;
 use App\Models\Category;
 use App\Http\Requests\TopicRequest;
+use Illuminate\Support\Facades\Auth;
 
 class TopicsController extends Controller
 {
@@ -34,7 +35,7 @@ class TopicsController extends Controller
     public function store(TopicRequest $request, Topic $topic)
     {
         $topic->fill($request->all());
-        $topic->user_id = 1;
+        $topic->user_id = Auth::id();
         $topic->save();
         return redirect()->route('topics.show', $topic->id)->with('success', '创建成功');
     }

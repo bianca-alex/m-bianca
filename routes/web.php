@@ -16,5 +16,12 @@ Route::get('test','TestController@index');
 
 
 Route::get('/', 'TopicsController@index')->name('root');
-Route::resource('topics', 'TopicsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::resource('topics', 'TopicsController', ['only' => ['create', 'store', 'update', 'edit', 'destroy']])
+        ->middleware('checkAdmin');
 Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show');
+
+//Auth::routes();
+
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');

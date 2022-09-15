@@ -5,10 +5,10 @@
   <div class="container">
     <a class="navbar-brand " href="{{ url('/') }}">
       @guest
-      <label>M-bianca</label>
       @else
-      <label style="color: #63c9c9;">Welecome M-bianca</label>
+      Welecome 
       @endguest
+      M-bianca
     </a>
     <label>xxxxxxxxxxxxxx</label>
     <form class="d-flex" role="search">
