@@ -3,9 +3,8 @@
     <!-- Branding Image -->
   </div>
   <div class="container">
-    <a class="navbar-brand " href="{{ url('/') }}">
+    <a class="navbar-brand" style="margin-left: 82px;" href="{{ url('/') }}">
       @guest
-      <label>M-bianca</label>
       @else
       <label style="color: #63c9c9;">Welecome M-bianca</label>
       @endguest
