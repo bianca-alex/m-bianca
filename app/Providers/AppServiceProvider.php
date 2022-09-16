@@ -24,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        $data = \DB::table('good_sentences')->inRandomOrder()->first();
+        \View::share('sentence', $data->content);
         \Illuminate\Pagination\Paginator::useBootstrap();
     }
 }
