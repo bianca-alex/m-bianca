@@ -63,6 +63,7 @@
 
 @section('scripts')
   <script src="{{ asset('js/editormd.js') }}"></script>
+  <script src="{{ asset('js/paste-upload-img.js') }}"></script>
   <script>
     // 编辑器
     var editor = editormd("editor", {
@@ -83,6 +84,18 @@
         imageUpload : true, //图片上传
         imageFormats : ["jpg", "jpeg", "gif", "png"],//上传图片格式
         imageUploadURL : "{{route('topics.upload_image')}}",//图片上传URL
+        onload : function() {
+           initPasteDragImg(this);
+        },
+        onfullscreen : function() {
+            $('#header').css('display', 'none');
+            $('#footer').css('display', 'none');
+            console.log('xxxxx');
+        },
+        onfullscreenExit : function() {
+            $('#header').css('display', 'block');
+            $('#footer').css('display', 'block');
+        }
     });
   </script>
 @stop

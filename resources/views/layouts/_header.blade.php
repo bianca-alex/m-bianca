@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-light navbar-static-top">
+<nav id='header' class="navbar navbar-light bg-light navbar-static-top">
   <div class="container">
     <!-- Branding Image -->
   </div>
