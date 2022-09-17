@@ -19,6 +19,7 @@ Route::get('/', 'TopicsController@index')->name('root');
 Route::resource('topics', 'TopicsController', ['only' => ['create', 'store', 'update', 'edit', 'destroy']])
         ->middleware('checkAdmin');
 Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show');
+Route::get('topics', 'TopicsController@index')->name('topics.index');
 
 //Auth::routes();
 
