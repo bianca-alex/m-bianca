@@ -10,7 +10,7 @@
       @endguest
     </a>
     <label>{{ $sentence }}</label>
-    <a href="{{ route('topics.create') }}">
+    <a href="{{ route('topics.create') }}" style="color: #242020;">
       <i class="fa fa-plus" aria-hidden="true"></i> 
     </a>
     <form class="d-flex" role="search">
