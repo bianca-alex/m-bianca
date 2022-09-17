@@ -21305,6 +21305,18 @@ body {
   margin-bottom: 60px;
 }
 
+.circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.circle > img {
+  width: 100%;
+  height: 100%;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
