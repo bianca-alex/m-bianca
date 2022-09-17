@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Session;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,8 +26,17 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        $data = \DB::table('good_sentences')->inRandomOrder()->first();
-        \View::share('sentence', $data->content);
+        \View::composer('*', function ($view) {
+        //
+            if (session()->has('sentence')) {
+                $data = session()->get('sentence');
+            } else {
+                $data = \DB::table('good_sentences')->inRandomOrder()->first()->content;
+                session()->put('sentence', $data);
+            }
+            \View::share('sentence', $data);
+        });
+
         \Illuminate\Pagination\Paginator::useBootstrap();
     }
 }
