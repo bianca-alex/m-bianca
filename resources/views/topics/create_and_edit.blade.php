@@ -42,12 +42,12 @@
             </select>
           </div>
 
-          <div class="mb-3">
-            <textarea name="body" class="form-control" id="editor" rows="6" placeholder="请填入至少三个字符的内容。"
-              required>{{ old('body', $topic->body) }}</textarea>
+          <div class="mb-3" id="editor">
+            <textarea class="editormd-markdown-textarea" name="body_orign" style="display: none;">{{ old('body_orign', $topic->body_orign) }}</textarea>
+            <textarea class="editormd-html-textarea" style="display:none;" name="body"></textarea>
           </div>
 
-          <div class="well well-sm">
+          <div class="well well-sm" style="margin-top: 20px;">
             <button type="submit" class="btn btn-primary"><i class="far fa-save mr-2" aria-hidden="true"></i> 保存</button>
           </div>
           </form>
@@ -58,30 +58,31 @@
 @endsection
 
 @section('styles')
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/simditor.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/editormd.css') }}" />
 @stop
 
 @section('scripts')
-  <script type="text/javascript" src="{{ asset('js/module.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('js/hotkeys.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('js/uploader.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('js/simditor.js') }}"></script>
-
+  <script src="{{ asset('js/editormd.js') }}"></script>
   <script>
-    $(document).ready(function() {
-      var editor = new Simditor({
-        textarea: $('#editor'),
-        upload: {
-          url: '{{ route('topics.upload_image') }}',
-          params: {
-            _token: '{{ csrf_token() }}'
-          },
-          fileKey: 'upload_file',
-          connectionCount: 3,
-          leaveConfirm: '文件上传中，关闭此页面将取消上传。'
+    // 编辑器
+    var editor = editormd("editor", {
+        width  : "100%",
+        height : 600,
+        fontSize:"14px",
+        placeholder:'请使用 Markdown 语法',
+        lineNumbers:false, //行号
+        styleActiveLine:false, //当前行高亮
+        // tocContainer : "#test",//你可以将TOC结构输出到自定义容器中
+        path   : "/editor/lib/",
+        toolbarIcons : function() {
+            return ["h3","h4","bold", "quote", "hr","|", "list-ul","list-ol", "|","link", "image", "table", "|", "watch", "fullscreen","preview"]
         },
-        pasteImage: true,
-      });
+        syncScrolling: true, //左右侧预览同步
+        toolbarAutoFixed:true,//工具栏自动固定定位的开启与禁用
+        saveHTMLToTextarea : true, // 保存 HTML 到 Textarea
+        imageUpload : true, //图片上传
+        imageFormats : ["jpg", "jpeg", "gif", "png"],//上传图片格式
+        imageUploadURL : "{{route('topics.upload_image')}}",//图片上传URL
     });
   </script>
 @stop

@@ -1,9 +1,11 @@
 {
     "/js/app.js": "/js/app.js?id=ee3629ebe222fdfa161d3745632671da",
     "/css/app.css": "/css/app.css?id=6e96c3fae895a9d9bc74630f1ad6102e",
+    "/js/editormd.js": "/js/editormd.js?id=6c2cc0f9ce5020a8c3392fac2780ae7f",
     "/js/hotkeys.js": "/js/hotkeys.js?id=60b95061e721b635da02b5cc7792204b",
     "/js/module.js": "/js/module.js?id=1f0206730b87684b7ad654a458319014",
     "/js/simditor.js": "/js/simditor.js?id=e19ffe3d664de3d4228a9bd3573b4a6b",
     "/js/uploader.js": "/js/uploader.js?id=0e7f04273d8e2a0a834c6884635bb6d9",
+    "/css/editormd.css": "/css/editormd.css?id=76b876aeb8967458e3f844964dfbbc4b",
     "/css/simditor.css": "/css/simditor.css?id=69eb7767d3b20549b33fafd8e1255363"
 }
