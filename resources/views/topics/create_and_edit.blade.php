@@ -62,6 +62,7 @@
 @stop
 
 @section('scripts')
+  <script src="{{ asset('js/highlight.min.js') }}"></script>
   <script src="{{ asset('js/editormd.js') }}"></script>
   <script src="{{ asset('js/paste-upload-img.js') }}"></script>
   <script>
@@ -97,5 +98,8 @@
             $('#footer').css('display', 'block');
         }
     });
+    //editor.setPreviewTheme('dark');
+    editor.setPreviewTheme('default');
+    editor.setEditorTheme('neo');
   </script>
 @stop

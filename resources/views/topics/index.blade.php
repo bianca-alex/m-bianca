@@ -27,12 +27,25 @@
     </div>
   </div>
 
-  <div class="col-lg-3 col-md-3 sidebar top_button">
+  <div class="col-lg-3 col-md-3 sidebar">
     @include('topics._sidebar')
-    <p class="btn_pagetop">
+    <p  id="myBtn" style="display: none;" class="btn_pagetop top_button">
       <a href="#top">Top</a>
     </p>
   </div>
 </div>
 
 @endsection
+
+@section('scripts')
+  <script>
+    window.onscroll = function() {scrollFunction()};
+    function scrollFunction() {
+      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        document.getElementById("myBtn").style.display = "block";
+      } else {
+        document.getElementById("myBtn").style.display = "none";
+      }
+    }
+  </script>
+@stop

@@ -44,3 +44,13 @@
     </div>
   </div>
 @stop
+
+@section('styles')
+  <link rel="stylesheet" href="{{ asset('css/atelier-estuary-light.min.css') }}" />
+  {{-- <link rel="stylesheet" href="{{ asset('css/a11y-dark.min.css') }}" /> --}}
+@stop
+
+@section('scripts')
+  <script src="{{ asset('js/highlight.min.js') }}"></script>
+  <script>hljs.highlightAll();</script>
+@stop
