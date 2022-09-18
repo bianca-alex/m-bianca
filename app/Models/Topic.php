@@ -20,4 +20,10 @@ class Topic extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function vzt()
+    {
+        visits($this)->increment();
+        return visits($this)->count();
+    }
 }

@@ -24,7 +24,7 @@ class SentenceTableSeeder extends Seeder
             ['content' => '每天都是新的一天，有好运比什么都强'],
             ['content' => '生活总是让我们遍体鳞伤,但到后来,那些受伤的地方一定会变成我们最强壮的地方'],
             ['content' => '一个人可以被毁灭,但不能被打败'],
-            ['content' => '太阳落山我不怕,直对着看也不觉眼前发黑。其实夕阳同样强烈,只是早上的光太刺眼'],
+            ['content' => '相遇，是一种美丽，像一座小城向晚，映着夕阳的绚烂'],
         ];
 
         \DB::table('good_sentences')->insert($data);

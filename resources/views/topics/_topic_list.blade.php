@@ -14,9 +14,6 @@
           <small class="media-body meta text-secondary">
 
             <div style="float: right; margin-top: 20px;">
-              <a href="{{ route('topics.show', [$topic->id]) }}" style="margin-right: 20px;">
-                <span class="badge bg-secondary rounded-pill"> {{ $topic->view_count }} </span>
-              </a>
               <a class="text-secondary" style="margin-right: 20px;" href="#" title="{{ $topic->category->name }}">
                 <i class="far fa-folder"></i>
                 {{ $topic->category->name }}

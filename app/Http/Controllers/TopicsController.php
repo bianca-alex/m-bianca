@@ -24,7 +24,8 @@ class TopicsController extends Controller
 
     public function show(Topic $topic, Request $request)
     {
-        return view('topics.show', compact('topic'));
+        $view_count = $topic->vzt();
+        return view('topics.show', compact('topic', 'view_count'));
     }
 
     public function create(Topic $topic)

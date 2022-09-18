@@ -18,7 +18,7 @@
             {{ $topic->created_at->diffForHumans() }}
             ⋅
             <i class="fa fa-eye" aria-hidden="true"></i>
-            {{ $topic->view_count }}
+            {{ $view_count }}
           </div>
 
           <div class="topic-body mt-4 mb-4">
