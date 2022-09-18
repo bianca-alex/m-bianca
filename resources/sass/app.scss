@@ -79,7 +79,7 @@ body {
 }
 
 /* Topic Index Page */
-.topics-index-page, .root-page{
+.topics-index-page, .root-page, .categories-show-page{
   .topic-list {
     .nav>li>a {
       position: relative;
@@ -176,4 +176,8 @@ body {
             line-height: 38px;
         }
     }
+}
+
+.active-categories {
+    color: #cdabab !important;
 }

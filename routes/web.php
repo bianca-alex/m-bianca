@@ -20,6 +20,7 @@ Route::resource('topics', 'TopicsController', ['only' => ['create', 'store', 'up
         ->middleware('checkAdmin');
 Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show');
 Route::get('topics/{serach?}', 'TopicsController@index')->name('topics.index');
+Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
 
 //Auth::routes();
 

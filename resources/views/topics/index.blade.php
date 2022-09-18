@@ -5,9 +5,9 @@
 @section('content')
 <div class="col-lg-9 col-md-9 topic-list" style="margin-bottom: 20px;">
   <ul class="nav justify-content-center" style="font-size: 30px;">
-    @foreach ($categories as $category)
+    @foreach ($categories as $category_item)
     <li class="nav-item">
-      <a class="nav-link" href="#">{{ $category->name }}</a>
+      <a class="nav-link {{ isset($current_category_id) && $category_item->id == $current_category_id ? 'active-categories':'' }}" href="{{ route('categories.show', $category_item->id) }}">{{ $category_item->name }}</a>
     </li>
     @endforeach
   </ul>
