@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '话题列表')
+@section('title', isset($current_category_id)?'话题分类':'话题列表')
 
 @section('content')
 <div class="col-lg-9 col-md-9 topic-list" style="margin-bottom: 20px;">
