@@ -100,6 +100,6 @@
     });
     //editor.setPreviewTheme('dark');
     editor.setPreviewTheme('default');
-    editor.setEditorTheme('neo');
+    //editor.setEditorTheme('neo');
   </script>
 @stop
