@@ -15,8 +15,11 @@ class TopicsController extends Controller
     //
     public function index(Topic $topic, Request $request, User $user)
     {
-        $topics = $topic
-                    ->with('user', 'category')
+        $query = Topic::query();
+        if ($request->filled('search')){
+            $query->whereFullText(['title','body_orign'],$request->search);
+        }
+        $topics = $query->with('user', 'category')
  	        	    ->paginate(10);
         $categories = Category::all();
         return view('topics.index', compact('topics', 'categories'));
