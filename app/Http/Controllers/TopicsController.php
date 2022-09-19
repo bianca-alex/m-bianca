@@ -25,16 +25,14 @@ class TopicsController extends Controller
         return view('topics.index', compact('topics', 'categories'));
     }
 
-    public function indexDrafts(Topic $topic, Request $request, User $user)
+    public function indexDrafts()
     {
-        $query = Topic::query()->withOrder($request->order)->where('is_show', '!=', 1)->where('user_id', \Auth::id());
-        if ($request->filled('search')){
-            $query->whereFullText(['title','body_orign'],$request->search);
-        }
+        $query = Topic::query()->where('is_show', '!=', 1)->where('user_id', \Auth::id());
         $topics = $query->with('user', 'category')
  	        	    ->paginate(10);
         $categories = Category::all();
-        return view('topics.index', compact('topics', 'categories'));
+        $is_draft = true;
+        return view('topics.index', compact('topics', 'categories', 'is_draft'));
     }
 
 

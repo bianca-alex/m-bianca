@@ -24,7 +24,7 @@ Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
 
 //Auth::routes();
 Route::get('users/drafts', 'TopicsController@indexDrafts')->name('users.drafts');
-Route::put('users/storeDraft', 'TopicsController@storeDraft')->name('topics.storeDraft');
+Route::match(['put', 'post', 'patch'], 'users/storeDraft', 'TopicsController@storeDraft')->name('topics.storeDraft');
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');

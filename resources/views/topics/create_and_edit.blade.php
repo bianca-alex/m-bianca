@@ -21,7 +21,7 @@
             <form id="form_draft" action="{{ route('topics.update', $topic->id) }}" method="POST" accept-charset="UTF-8">
               <input type="hidden" name="_method" value="PUT">
             @else
-              <form action="{{ route('topics.store') }}" method="POST" accept-charset="UTF-8">
+              <form id="form_draft" action="{{ route('topics.store') }}" method="POST" accept-charset="UTF-8">
           @endif
 
           <input type="hidden" name="_token" value="{{ csrf_token() }}">

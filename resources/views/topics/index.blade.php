@@ -4,6 +4,12 @@
 
 @section('content')
 <div class="col-lg-9 col-md-9 topic-list" style="margin-bottom: 20px;">
+  @if(isset($is_draft))
+
+  <ul class="nav justify-content-center" style="font-size: 30px;">
+  草稿
+  </ul>
+  @else
   <ul class="nav justify-content-center" style="font-size: 30px;">
     @foreach ($categories as $category_item)
     <li class="nav-item">
@@ -22,6 +28,7 @@
       <a class="nav-link " href="{{ route('topics.index') }}?order=viewcount">星级</a>
     </li>
   </ul>
+  @endif
 </div>
 <div class="row mb-5">
   <div class="col-lg-9 col-md-9 topic-list">
