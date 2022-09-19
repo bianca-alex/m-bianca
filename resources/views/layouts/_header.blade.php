@@ -3,11 +3,9 @@
     <!-- Branding Image -->
   </div>
   <div class="container">
-    <div class="circle">
-      <img src="/images/logo.jpg" alt="love" />
-    </div>
     <a class="navbar-brand" style="margin-left: 82px;" href="{{ url('/') }}">
       @guest
+      <label style="color: #63c9c9;">首页</label>
       @else
       <label style="color: #63c9c9;">Welecome M-bianca</label>
       @endguest
@@ -25,6 +23,9 @@
     </form>
     @guest
     @else
+    <div class="circle">
+      <img src="/images/logo.jpg" alt="love" />
+    </div>
     <a href="#" onclick="document.getElementById('logout').submit();">
       <form action="{{ route('logout') }}" method="POST" id="logout">
         {{ csrf_field() }}

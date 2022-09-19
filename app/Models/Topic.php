@@ -26,4 +26,26 @@ class Topic extends Model
         visits($this)->increment();
         return visits($this)->count();
     }
+
+    public function scopeWithOrder($query, $order)
+    {
+        switch ($order) {
+            case 'viewcount':
+                $query->viewCount();
+                break;
+            default:
+                $query->recent();
+                break;
+        }
+    }
+
+    public function scopeRecent($query)
+    {
+        return $query->orderBy('created_at', 'desc');
+    }
+
+    public function scopeViewCount($query)
+    {
+        return $query->orderBy('view_count', 'desc');
+    }
 }

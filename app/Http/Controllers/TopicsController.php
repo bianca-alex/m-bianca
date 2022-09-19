@@ -15,7 +15,7 @@ class TopicsController extends Controller
     //
     public function index(Topic $topic, Request $request, User $user)
     {
-        $query = Topic::query();
+        $query = Topic::query()->withOrder($request->order);
         if ($request->filled('search')){
             $query->whereFullText(['title','body_orign'],$request->search);
         }

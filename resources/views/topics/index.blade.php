@@ -11,6 +11,17 @@
     </li>
     @endforeach
   </ul>
+  <ul class="nav justify-content-end" style="font-size: 10px; margin-right: 15px;">
+    <li class="nav-item" style="align-self: center;">
+      <i class="fa fa-sort " aria-hidden="true" disabled=""></i>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " href="{{ route('topics.index') }}">时间</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " href="{{ route('topics.index') }}?order=viewcount">星级</a>
+    </li>
+  </ul>
 </div>
 <div class="row mb-5">
   <div class="col-lg-9 col-md-9 topic-list">
