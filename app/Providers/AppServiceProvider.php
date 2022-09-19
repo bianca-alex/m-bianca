@@ -3,8 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redis;
 
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Grammars\MySqlGrammar;
@@ -31,11 +30,11 @@ class AppServiceProvider extends ServiceProvider
         //
         \View::composer('*', function ($view) {
         //
-            if (session()->has('sentence')) {
-                $data = session()->get('sentence');
+            if (Redis::get('sentence')) {
+                $data = Redis::get('sentence');
             } else {
                 $data = \DB::table('good_sentences')->inRandomOrder()->first()->content;
-                session()->put('sentence', $data);
+                Redis::set('sentence', $data, 'ex', 60 *10);
             }
             \View::share('sentence', $data);
         });
