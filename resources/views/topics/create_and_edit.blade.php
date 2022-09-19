@@ -18,7 +18,7 @@
           <hr>
 
           @if ($topic->id)
-            <form action="{{ route('topics.update', $topic->id) }}" method="POST" accept-charset="UTF-8">
+            <form id="form_draft" action="{{ route('topics.update', $topic->id) }}" method="POST" accept-charset="UTF-8">
               <input type="hidden" name="_method" value="PUT">
             @else
               <form action="{{ route('topics.store') }}" method="POST" accept-charset="UTF-8">
@@ -49,6 +49,7 @@
 
           <div class="well well-sm" style="margin-top: 20px;">
             <button type="submit" class="btn btn-primary"><i class="far fa-save mr-2" aria-hidden="true"></i> 保存</button>
+            <button type="button" id="store-draft" class="btn btn-primary"><i class="far fa-save mr-2" aria-hidden="true"></i> 草稿</button>
           </div>
           </form>
         </div>
@@ -101,5 +102,11 @@
     //editor.setPreviewTheme('dark');
     editor.setPreviewTheme('default');
     //editor.setEditorTheme('neo');
+  </script>
+  <script>
+    $('#store-draft').click(function(){
+      $('form[id=form_draft]').attr('action', '{{ route("topics.storeDraft") }}');
+      $('#form_draft').submit();
+    });
   </script>
 @stop

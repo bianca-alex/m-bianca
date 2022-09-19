@@ -43,7 +43,7 @@ function uploadImg(file,Editor){
     formData.append('editormd-image-file', file, fileName);
 
     // 如果使用的 laravel 框架需要加上
-    var csrfToken = $('meta[name="_token"]').attr('content');
+    var csrfToken = $('meta[name="csrf-token"]').attr('content');
     formData.append('_token', csrfToken);
 
     $.ajax({

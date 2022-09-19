@@ -15,7 +15,7 @@ class TopicsController extends Controller
     //
     public function index(Topic $topic, Request $request, User $user)
     {
-        $query = Topic::query()->withOrder($request->order);
+        $query = Topic::query()->withOrder($request->order)->where('is_show', 1);
         if ($request->filled('search')){
             $query->whereFullText(['title','body_orign'],$request->search);
         }
@@ -24,6 +24,19 @@ class TopicsController extends Controller
         $categories = Category::all();
         return view('topics.index', compact('topics', 'categories'));
     }
+
+    public function indexDrafts(Topic $topic, Request $request, User $user)
+    {
+        $query = Topic::query()->withOrder($request->order)->where('is_show', '!=', 1)->where('user_id', \Auth::id());
+        if ($request->filled('search')){
+            $query->whereFullText(['title','body_orign'],$request->search);
+        }
+        $topics = $query->with('user', 'category')
+ 	        	    ->paginate(10);
+        $categories = Category::all();
+        return view('topics.index', compact('topics', 'categories'));
+    }
+
 
     public function show(Topic $topic, Request $request)
     {
@@ -41,8 +54,19 @@ class TopicsController extends Controller
     {
         $topic->fill($request->all());
         $topic->user_id = Auth::id();
+        $topic->is_show = 1; 
         $topic->save();
         return redirect()->route('topics.show', $topic->id)->with('success', '创建成功');
+    }
+
+    // 保存草稿
+    public function storeDraft(TopicRequest $request, Topic $topic)
+    {
+        $topic->fill($request->all());
+        $topic->user_id = Auth::id();
+        $topic->is_show = 0; 
+        $topic->save();
+        return redirect()->route('users.drafts')->with('success', '保存成功');
     }
 
     public function edit(Topic $topic)
@@ -53,8 +77,11 @@ class TopicsController extends Controller
 
     public function update(TopicRequest $request, Topic $topic)
     {
-        $topic->update($request->all());
-
+        //$topic->update($request->all());
+        $topic->fill($request->all());
+        $topic->user_id = Auth::id();
+        $topic->is_show = 1; 
+        $topic->save();
         return redirect()->route('topics.show', $topic->id)->with('success', '更新成功！');
     }
 
