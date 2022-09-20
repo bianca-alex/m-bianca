@@ -48,7 +48,7 @@
           </div>
 
           <div class="well well-sm" style="margin-top: 20px;">
-            <button type="submit" class="btn btn-primary"><i class="far fa-save mr-2" aria-hidden="true"></i> 保存</button>
+            <button type="submit" class="btn btn-primary"><i class="far fa-save mr-2" aria-hidden="true"></i> 发布</button>
             <button type="button" id="store-draft" class="btn btn-primary"><i class="far fa-save mr-2" aria-hidden="true"></i> 草稿</button>
           </div>
           </form>

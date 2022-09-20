@@ -28,7 +28,7 @@ class TopicsController extends AdminController
 
         $grid->column('id', __('Id'));
         $grid->column('title', __('Title'));
-        $grid->column('body', __('Body'));
+        //$grid->column('body', __('Body'));
         $grid->column('user_id', __('User id'));
         $grid->column('category_id', __('Category id'));
         $grid->column('view_count', __('View count'));
