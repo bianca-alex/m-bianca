@@ -15,20 +15,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('test','TestController@index');
 
 
+
+Route::middleware(['auth'])->group(function() {
+    Route::resource('topics', 'TopicsController', ['only' => ['create', 'store', 'update', 'edit', 'destroy']]);
+    Route::get('users/drafts', 'TopicsController@indexDrafts')->name('users.drafts');
+    Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+    Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload_image');
+    Route::match(['put', 'post', 'patch'], 'users/storeDraft', 'TopicsController@storeDraft')->name('topics.storeDraft');
+});
+
 Route::get('/', 'TopicsController@index')->name('root');
-Route::resource('topics', 'TopicsController', ['only' => ['create', 'store', 'update', 'edit', 'destroy']])
-        ->middleware('checkAdmin');
 Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show');
 Route::get('topics/{serach?}', 'TopicsController@index')->name('topics.index');
 Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
 
 //Auth::routes();
-Route::get('users/drafts', 'TopicsController@indexDrafts')->name('users.drafts');
-Route::match(['put', 'post', 'patch'], 'users/storeDraft', 'TopicsController@storeDraft')->name('topics.storeDraft');
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-
-
-Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload_image');

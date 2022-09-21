@@ -76,6 +76,7 @@ class TopicsController extends Controller
     public function update(TopicRequest $request, Topic $topic)
     {
         //$topic->update($request->all());
+        $this->authorize('update', Post::class);
         $topic->fill($request->all());
         $topic->user_id = Auth::id();
         $topic->is_show = 1; 
@@ -85,6 +86,7 @@ class TopicsController extends Controller
 
     public function destroy(Topic $topic)
     {
+        $this->authorize('update', Post::class);
         $topic->delete();
 
         return redirect()->route('topics.index')->with('success', '成功删除！');

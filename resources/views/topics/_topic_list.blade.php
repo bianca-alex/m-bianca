@@ -14,7 +14,7 @@
           <small class="media-body meta text-secondary">
 
             <div style="float: right; margin-top: 20px;">
-              <a class="text-secondary" style="margin-right: 20px;" href="#" title="{{ $topic->category->name }}">
+              <a class="text-secondary" style="margin-right: 20px;" href="{{ route('categories.show',$topic->category->id) }}" title="{{ $topic->category->name }}">
                 <i class="far fa-folder"></i>
                 {{ $topic->category->name }}
               </a>

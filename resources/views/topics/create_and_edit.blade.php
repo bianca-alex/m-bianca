@@ -41,7 +41,6 @@
               @endforeach
             </select>
           </div>
-
           <div class="mb-3" id="editor">
             <textarea class="editormd-markdown-textarea" name="body_orign" style="display: none;">{{ old('body_orign', $topic->body_orign) }}</textarea>
             <textarea class="editormd-html-textarea" style="display:none;" name="body"></textarea>
