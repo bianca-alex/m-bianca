@@ -18,7 +18,7 @@ class TopicsController extends Controller
     {
         $query = Topic::query()->withOrder($request->order)->where('is_show', 1);
         if ($request->filled('search')){
-            $query->whereFullText(['title','body_orign'],$request->search);
+            $query->whereFullText(['tags', 'title','body_orign'],$request->search);
         }
         $topics = $query->with('user', 'category')
  	        	    ->paginate(10);
@@ -36,6 +36,17 @@ class TopicsController extends Controller
         return view('topics.index', compact('topics', 'categories', 'is_draft'));
     }
 
+    public function tagsSearch(Topic $topic, Request $request)
+    {
+        $query = Topic::query()->withOrder($request->order)->where('is_show', 1);
+        if ($request->filled('search')){
+            $query->whereFullText(['tags', 'title','body_orign'],$request->search);
+        }
+        $topics = $query->with('user', 'category')
+ 	        	    ->paginate(10);
+        $categories = Category::all();
+        return view('topics.index', compact('topics', 'categories'));
+    }
 
     public function show(Topic $topic, Request $request)
     {

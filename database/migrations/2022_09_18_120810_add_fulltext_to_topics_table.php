@@ -15,7 +15,7 @@ class AddFulltextToTopicsTable extends Migration
     {
         Schema::table('topics', function (Blueprint $table) {
             //
-            $table->fulltext(['title', 'body_orign']);
+            $table->fulltext(['tags', 'title', 'body_orign']);
         });
     }
 
@@ -26,6 +26,6 @@ class AddFulltextToTopicsTable extends Migration
      */
     public function down()
     {
-        Schema::dropPulltext(['title', 'body_orign']);
+        Schema::dropPulltext(['tags', 'title', 'body_orign']);
     }
 }
