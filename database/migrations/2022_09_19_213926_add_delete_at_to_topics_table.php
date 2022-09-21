@@ -28,7 +28,7 @@ class AddDeleteAtToTopicsTable extends Migration
     {
         Schema::table('topics', function (Blueprint $table) {
             //
-            $table->softDeletes();
+            $table->dropSoftDeletes();
         });
     }
 }

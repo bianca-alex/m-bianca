@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Topic;
 use App\Models\Category;
+use App\Models\Tag;
 use App\Http\Requests\TopicRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Handlers\ImageUploadHandler;
@@ -44,8 +45,9 @@ class TopicsController extends Controller
 
     public function create(Topic $topic)
     {
+        $tags = \DB::table('tags')->pluck('tag_name');
         $categories = Category::all();
-        return view('topics.create_and_edit', compact('topic', 'categories'));
+        return view('topics.create_and_edit', compact('topic', 'categories', 'tags'));
     }
 
     public function store(TopicRequest $request, Topic $topic)
@@ -69,14 +71,16 @@ class TopicsController extends Controller
 
     public function edit(Topic $topic)
     {
+        $tags = \DB::table('tags')->pluck('tag_name');
         $categories = Category::all();
-        return view('topics.create_and_edit', compact('topic', 'categories'));
+        return view('topics.create_and_edit', compact('topic', 'categories', 'tags'));
     }
 
     public function update(TopicRequest $request, Topic $topic)
     {
         //$topic->update($request->all());
-        $this->authorize('update', Post::class);
+
+        $this->authorize('update', $topic);
         $topic->fill($request->all());
         $topic->user_id = Auth::id();
         $topic->is_show = 1; 
@@ -86,7 +90,7 @@ class TopicsController extends Controller
 
     public function destroy(Topic $topic)
     {
-        $this->authorize('update', Post::class);
+        $this->authorize('delete', $topic);
         $topic->delete();
 
         return redirect()->route('topics.index')->with('success', '成功删除！');

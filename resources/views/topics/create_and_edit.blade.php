@@ -20,7 +20,7 @@
           @if ($topic->id)
             <form id="form_draft" action="{{ route('topics.update', $topic->id) }}" method="POST" accept-charset="UTF-8">
               <input type="hidden" name="_method" value="PUT">
-            @else
+          @else
               <form id="form_draft" action="{{ route('topics.store') }}" method="POST" accept-charset="UTF-8">
           @endif
 
@@ -41,6 +41,8 @@
               @endforeach
             </select>
           </div>
+          <input name='tags' class='some_class_name' placeholder='选择文章标签，最多三个' value='{{ $topic->tags }}'><br />
+
           <div class="mb-3" id="editor">
             <textarea class="editormd-markdown-textarea" name="body_orign" style="display: none;">{{ old('body_orign', $topic->body_orign) }}</textarea>
             <textarea class="editormd-html-textarea" style="display:none;" name="body"></textarea>
@@ -59,6 +61,43 @@
 
 @section('styles')
   <link rel="stylesheet" href="{{ asset('css/editormd.css') }}" />
+  <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+  <style>
+  .tags-look .tagify__dropdown__item{
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 3px;
+    padding: .3em .5em;
+    border: 1px solid #CCC;
+    background: #F3F3F3;
+    margin: .2em;
+    font-size: .85em;
+    color: black;
+    transition: 0s;
+  }
+
+  .tags-look .tagify__dropdown__item--active{
+    color: black;
+  }
+
+  .tags-look .tagify__dropdown__item:hover{
+    background: lightyellow;
+    border-color: gold;
+  }
+
+  .tags-look .tagify__dropdown__item--hidden {
+    max-width: 0;
+    max-height: initial;
+    padding: .3em 0;
+    margin: .2em 0;
+    white-space: nowrap;
+    text-indent: -20px;
+    border: 0;
+  }
+  .some_class_name {
+    margin-bottom: 15px;
+  }
+  </style>
 @stop
 
 @section('scripts')
@@ -104,8 +143,33 @@
   </script>
   <script>
     $('#store-draft').click(function(){
-      $('form[id=form_draft]').attr('action', '{{ route("topics.storeDraft") }}');
+      @if ($topic->id)
+        $('form[id=form_draft]').attr('action', '{{ route("topics.storeDraft", $topic->id) }}');
+      @else
+        $('form[id=form_draft]').attr('action', '{{ route("topics.storeDraft") }}');
+      @endif
       $('#form_draft').submit();
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+  <script>
+    var tag_input = document.querySelector('input[name="tags"]'),
+    // init Tagify script on the above inputs
+    tagify = new Tagify(tag_input, {
+      enforceWhitelist : true,
+      whitelist: eval({!! $tags !!}),
+      maxTags: 3,
+      dropdown: {
+        maxItems: 20,           // <- mixumum allowed rendered suggestions
+        classname: "tags-look", // <- custom classname for this dropdown, so it could be targeted
+        enabled: 0,             // <- show suggestions on focus
+        closeOnSelect: true    // <- do not hide the suggestions dropdown once an item has been selected
+      },
+      originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(',')
+    });
+    tagify.on('add', function(e){
+        console.log(e.detail.tagify.value)  // data, index, and DOM node
     });
   </script>
 @stop

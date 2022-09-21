@@ -21,7 +21,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('users/drafts', 'TopicsController@indexDrafts')->name('users.drafts');
     Route::post('logout', 'Auth\LoginController@logout')->name('logout');
     Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload_image');
-    Route::match(['put', 'post', 'patch'], 'users/storeDraft', 'TopicsController@storeDraft')->name('topics.storeDraft');
+    Route::match(['put', 'post', 'patch'], 'users/storeDraft/{topic?}', 'TopicsController@storeDraft')->name('topics.storeDraft');
 });
 
 Route::get('/', 'TopicsController@index')->name('root');

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTagTopicRelationsTable extends Migration
+class AddTagsToTopicsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateTagTopicRelationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tag_topic_relations', function (Blueprint $table) {
-            $table->id();
-            $table->integer('topic_id');
-            $table->integer('tag_id');
-            $table->timestamps();
+        Schema::table('topics', function (Blueprint $table) {
+            //
+            $table->string('tags')->nullable();
         });
     }
 
@@ -28,6 +26,9 @@ class CreateTagTopicRelationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tag_topic_relations');
+        Schema::table('topics', function (Blueprint $table) {
+            //
+            $table->dropColumn('tags');
+        });
     }
 }
