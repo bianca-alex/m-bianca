@@ -12,8 +12,14 @@
           </div>
 
           <small class="media-body meta text-secondary">
-
-            <div style="float: right; margin-top: 20px;">
+            <div style="float:left; display: inline; margin-top: 20px; margin-left: 50px;">
+              @if (count($topic->tags)>0)
+                @foreach($topic->tags as $tag)
+                  <a href="{{ route('topics.tags') }}?search={{ $tag }}" style="margin-right: 10px; background-color: #dbf4db; color: #686565; padding: 5px; border-radius: 5px;">{{ $tag }}</a> 
+                @endforeach
+              @endif
+            </div>
+            <div style="float: right; margin-top: 20px; display inline">
               <a class="text-secondary" style="margin-right: 20px;" href="{{ route('categories.show',$topic->category->id) }}" title="{{ $topic->category->name }}">
                 <i class="far fa-folder"></i>
                 {{ $topic->category->name }}

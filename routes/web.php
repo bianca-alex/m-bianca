@@ -26,8 +26,8 @@ Route::middleware(['auth'])->group(function() {
 
 Route::get('/', 'TopicsController@index')->name('root');
 Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show');
-Route::get('topics/{serach?}', 'TopicsController@index')->name('topics.index');
-Route::get('tags/{serach?}', 'TopicsController@tagsSearch')->name('topics.tags');
+Route::get('topics/{search?}', 'TopicsController@index')->name('topics.index');
+Route::get('tags/{search?}', 'TopicsController@tagsSearch')->name('topics.tags');
 Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
 
 //Auth::routes();

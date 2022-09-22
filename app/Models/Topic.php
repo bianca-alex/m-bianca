@@ -41,6 +41,14 @@ class Topic extends Model
         }
     }
 
+    public function getTagsAttribute($value)
+    {
+        if ($value) {
+           return explode(',', $value); 
+        }
+        return [];
+    }
+
     public function scopeRecent($query)
     {
         return $query->orderBy('created_at', 'desc');
