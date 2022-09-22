@@ -41,12 +41,18 @@ class Topic extends Model
         }
     }
 
-    public function getTagsAttribute($value)
+    public function getArrTagsAttribute()
     {
-        if ($value) {
-           return explode(',', $value); 
+        if ($this->tags) {
+           return explode(',', $this->tags); 
         }
         return [];
+    }
+
+
+    public function getOrignTagsAttribute($value)
+    {
+        return $this->tags;
     }
 
     public function scopeRecent($query)

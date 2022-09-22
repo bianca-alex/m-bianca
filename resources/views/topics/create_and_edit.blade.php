@@ -41,7 +41,7 @@
               @endforeach
             </select>
           </div>
-          <input name='tags' class='some_class_name' placeholder='选择文章标签，最多三个' value='{{ $topic->tags }}'><br />
+          <input name='tags' id="tags" class='some_class_name' placeholder='选择文章标签，最多三个' value='{{ $topic->orign_tags }}'><br />
 
           <div class="mb-3" id="editor">
             <textarea class="editormd-markdown-textarea" name="body_orign" style="display: none;">{{ old('body_orign', $topic->body_orign) }}</textarea>
@@ -130,11 +130,13 @@
         onfullscreen : function() {
             $('#header').css('display', 'none');
             $('#footer').css('display', 'none');
+            $('.tagify').css('display', 'none');
             console.log('xxxxx');
         },
         onfullscreenExit : function() {
             $('#header').css('display', 'block');
             $('#footer').css('display', 'block');
+            $('.tagify').css('display', 'block');
         }
     });
     //editor.setPreviewTheme('dark');

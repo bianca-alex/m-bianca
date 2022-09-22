@@ -2,7 +2,9 @@
   <ul class="list-unstyled">
     @foreach ($topics as $topic)
       <li class="d-flex">
-
+        <!--<div class="" style="width: 10%; align-self: center; text-align: center;">
+          <img style="width: 60px;height: 60px;border-radius: inherit;border: none;" src="https://cdn.learnku.com/uploads/avatars/63958_1590977180.jpeg!/both/100x100">
+        </div>-->
         <div class="flex-grow-1 ms-2">
 
           <div class="mt-0 mb-1">
@@ -12,9 +14,9 @@
           </div>
 
           <small class="media-body meta text-secondary">
-            <div style="float:left; display: inline; margin-top: 20px; margin-left: 50px;">
-              @if (count($topic->tags)>0)
-                @foreach($topic->tags as $tag)
+            <div style="float:left; display: inline; margin-top: 20px; margin-left: 10px;">
+              @if (count($topic->arr_tags)>0)
+                @foreach($topic->arr_tags as $tag)
                   <a href="{{ route('topics.tags') }}?search={{ $tag }}" style="margin-right: 10px; background-color: #dbf4db; color: #686565; padding: 5px; border-radius: 5px;">{{ $tag }}</a> 
                 @endforeach
               @endif
