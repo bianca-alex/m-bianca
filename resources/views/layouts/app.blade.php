@@ -13,6 +13,7 @@
 
   <!-- Styles -->
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+  <link rel="icon" href="{{ url('./favicon.svg') }}" type="image/gif" >
   @yield('styles')
 
 </head>
