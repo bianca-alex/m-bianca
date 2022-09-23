@@ -1,3 +1,10 @@
+<div class="card" style="width: 18rem; margin-bottom: 20px; background: #fdfbf1!important;">
+  <div class="card-body">
+    <h5>M - bianca</h5>
+    <p class="text-justify"></p>
+    <p class="text-justify"></p>
+  </div>
+</div>
 <div class="card" style="width: 18rem;">
   <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">

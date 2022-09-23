@@ -7,7 +7,7 @@
       @guest
       <label style="color: #63c9c9;">首页</label>
       @else
-      <label style="color: #63c9c9;">Welecome M-bianca</label>
+      <label style="color: #63c9c9;">Welecome {{ Auth::user()->name }}</label>
       @endguest
     </a>
     <label>{{ $sentence }}</label>
