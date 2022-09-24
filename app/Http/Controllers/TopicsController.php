@@ -23,7 +23,8 @@ class TopicsController extends Controller
         $topics = $query->with('user', 'category')
  	        	    ->paginate(10);
         $categories = Category::all();
-        return view('topics.index', compact('topics', 'categories'));
+        $tags = Tag::all();
+        return view('topics.index', compact('topics', 'categories', 'tags'));
     }
 
     public function indexDrafts()
@@ -33,7 +34,8 @@ class TopicsController extends Controller
  	        	    ->paginate(10);
         $categories = Category::all();
         $is_draft = true;
-        return view('topics.index', compact('topics', 'categories', 'is_draft'));
+        $tags = Tag::all();
+        return view('topics.index', compact('topics', 'categories', 'is_draft', 'tags'));
     }
 
     public function tagsSearch(Topic $topic, Request $request)
@@ -45,7 +47,8 @@ class TopicsController extends Controller
         $topics = $query->with('user', 'category')
  	        	    ->paginate(10);
         $categories = Category::all();
-        return view('topics.index', compact('topics', 'categories'));
+        $tags = Tag::all();
+        return view('topics.index', compact('topics', 'categories', 'tags'));
     }
 
     public function show(Topic $topic, Request $request)
