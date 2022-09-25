@@ -23,7 +23,7 @@ class TopicsController extends Controller
         $topics = $query->with('user', 'category')
  	        	    ->paginate(10);
         $categories = Category::all();
-        $tags = Tag::all();
+        $tags = Tag::orderBy('num','DESC')->limit(10)->get();
         return view('topics.index', compact('topics', 'categories', 'tags'));
     }
 
@@ -34,7 +34,7 @@ class TopicsController extends Controller
  	        	    ->paginate(10);
         $categories = Category::all();
         $is_draft = true;
-        $tags = Tag::all();
+        $tags = Tag::orderBy('num','DESC')->limit(10)->get();
         return view('topics.index', compact('topics', 'categories', 'is_draft', 'tags'));
     }
 
@@ -48,6 +48,7 @@ class TopicsController extends Controller
  	        	    ->paginate(10);
         $categories = Category::all();
         $tags = Tag::all();
+        $tags = Tag::orderBy('num','DESC')->limit(10)->get();
         return view('topics.index', compact('topics', 'categories', 'tags'));
     }
 

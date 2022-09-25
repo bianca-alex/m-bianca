@@ -42,7 +42,7 @@
 </div>
 <div class="card" style="width: 18rem;">
   <div class="d-flex justify-content-between bg-transparent  card-header">
-    <strong>标签</strong>
+    <strong>热门标签</strong>
   </div>
   <div class="p-3 card-body">
     @foreach($tags as $tag)

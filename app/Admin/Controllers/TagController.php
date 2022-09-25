@@ -28,6 +28,7 @@ class TagController extends AdminController
 
         $grid->column('id', __('Id'));
         $grid->column('tag_name', __('Tag name'));
+        $grid->column('num', __('Num'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -46,6 +47,7 @@ class TagController extends AdminController
 
         $show->field('id', __('Id'));
         $show->field('tag_name', __('Tag name'));
+        $show->field('num', __('Num'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -62,6 +64,7 @@ class TagController extends AdminController
         $form = new Form(new Tag());
 
         $form->text('tag_name', __('Tag name'));
+        $form->number('num', __('Num'));
 
         return $form;
     }
