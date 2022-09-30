@@ -16,7 +16,7 @@ class CategoriesController extends Controller
         // 传参变量话题和分类到模板中
         $categories = Category::all();
         $current_category_id = $category->id;
-        $tags = Tag::all();
+        $tags = Tag::orderBy('num','DESC')->limit(10)->get();
         return view('topics.index', compact('topics', 'categories', 'current_category_id', 'tags'));
     }
 }
