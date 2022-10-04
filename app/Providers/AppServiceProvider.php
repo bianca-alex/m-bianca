@@ -76,5 +76,6 @@ class AppServiceProvider extends ServiceProvider
 
             return $this;
         });
+        \URL::forceScheme('https');
     }
 }

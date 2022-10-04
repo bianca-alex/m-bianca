@@ -10,15 +10,7 @@ class TestController extends Controller
     //
     public function index()
     {
-        if(Redis::llen('lottery') < 10){
-            // 成功
-            sleep(2);
-            Redis::lpush('lottery','%'.microtime());
-            sleep(2);
-            echo 'success';
-	    }else{
-            // 失败
-            echo 'fail';
-	    }
+        \Cookie::queue('m_bianca_Abtest', $_SERVER['URL_PREFIX'], 3600);
+        echo \Cookie::get('m_bianca_Abtest');
     }
 }
