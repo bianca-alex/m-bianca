@@ -2,7 +2,7 @@
   <div class="container">
     <!-- Branding Image -->
   </div>
-  <div class="container">
+  <div class="container" style="max-width: 1140px;">
     <a class="navbar-brand" style="margin-left: 82px;" href="{{ url('/') }}">
       @guest
       <label style="color: #63c9c9;">首页</label>

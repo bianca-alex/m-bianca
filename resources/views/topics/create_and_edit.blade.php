@@ -42,6 +42,10 @@
             </select>
           </div>
           <input name='tags' id="tags" class='some_class_name' placeholder='选择文章标签，最多三个' value='{{ $topic->orign_tags }}'><br />
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" name="is_private" id="flexSwitchCheckDefault"{{$topic->is_private ? 'checked':''}}>            <label class="form-check-label" for="flexSwitchCheckDefault">是否设为私密</label>
+          </div>
+           <br/>
 
           <div class="mb-3" id="editor">
             <textarea class="editormd-markdown-textarea" name="body_orign" style="display: none;">{{ old('body_orign', $topic->body_orign) }}</textarea>

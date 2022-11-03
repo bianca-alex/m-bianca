@@ -16,7 +16,11 @@ class TopicsController extends Controller
     //
     public function index(Topic $topic, Request $request, User $user)
     {
-        $query = Topic::query()->withOrder($request->order)->where('is_show', 1);
+        if(\Auth::check()){
+            $query = Topic::query()->withOrder($request->order)->where('is_show', 1);
+        }else{
+            $query = Topic::query()->withOrder($request->order)->where('is_show', 1)->where('is_private', 0);
+        }
         if ($request->filled('search')){
             $query->whereFullText(['tags', 'title','body_orign'],$request->search);
         }
@@ -40,7 +44,11 @@ class TopicsController extends Controller
 
     public function tagsSearch(Topic $topic, Request $request)
     {
-        $query = Topic::query()->withOrder($request->order)->where('is_show', 1);
+        if(\Auth::check()){
+            $query = Topic::query()->withOrder($request->order)->where('is_show', 1);
+        }else{
+            $query = Topic::query()->withOrder($request->order)->where('is_show', 1)->where('is_private', 0);
+        }
         if ($request->filled('search')){
             $query->whereFullText(['tags', 'title','body_orign'],$request->search);
         }
@@ -70,6 +78,10 @@ class TopicsController extends Controller
         $topic->fill($request->all());
         $topic->user_id = Auth::id();
         $topic->is_show = 1; 
+        $topic->is_private = 0;
+        if($request->is_private){
+            $topic->is_private = 1;
+        }
         $topic->save();
         return redirect()->route('topics.show', $topic->id)->with('success', '创建成功');
     }
@@ -80,6 +92,10 @@ class TopicsController extends Controller
         $topic->fill($request->all());
         $topic->user_id = Auth::id();
         $topic->is_show = 0; 
+        $topic->is_private = 0;
+        if($request->is_private){
+            $topic->is_private = 1;
+        }
         $topic->save();
         return redirect()->route('users.drafts')->with('success', '保存成功');
     }
@@ -99,6 +115,10 @@ class TopicsController extends Controller
         $topic->fill($request->all());
         $topic->user_id = Auth::id();
         $topic->is_show = 1; 
+        $topic->is_private = 0;
+        if($request->is_private){
+            $topic->is_private = 1;
+        }
         $topic->save();
         return redirect()->route('topics.show', $topic->id)->with('success', '更新成功！');
     }
