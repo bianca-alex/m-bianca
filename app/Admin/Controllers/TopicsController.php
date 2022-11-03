@@ -32,12 +32,12 @@ class TopicsController extends AdminController
         $grid->column('user_id', __('User id'));
         $grid->column('category_id', __('Category id'));
         $grid->column('view_count', __('View count'));
-        $grid->column('order', __('Order'));
+        //$grid->column('order', __('Order'));
         $grid->column('is_private', __('Private'));
-        $grid->column('excerpt', __('Excerpt'));
-        $grid->column('slug', __('Slug'));
+        //$grid->column('excerpt', __('Excerpt'));
+        //$grid->column('slug', __('Slug'));
         $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        //$grid->column('updated_at', __('Updated at'));
 
         return $grid;
     }
@@ -79,11 +79,11 @@ class TopicsController extends AdminController
 
         $form->text('title', __('Title'));
         $form->textarea('body', __('Body'));
-        $form->number('user_id', __('User id'));
-        $form->number('category_id', __('Category id'));
-        $form->number('view_count', __('View count'));
-        $form->number('order', __('Order'));
-        $form->number('is_private', __('Private'));
+        //$form->number('user_id', __('User id'));
+        //$form->number('category_id', __('Category id'));
+        $form->number('view_count', __('View count'))->min(0);
+        //$form->number('order', __('Order'));
+        $form->number('is_private', __('Private'))->min(0)->max(1);
         $form->textarea('excerpt', __('Excerpt'));
         $form->text('slug', __('Slug'));
 
