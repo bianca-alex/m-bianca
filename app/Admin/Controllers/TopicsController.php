@@ -33,6 +33,7 @@ class TopicsController extends AdminController
         $grid->column('category_id', __('Category id'));
         $grid->column('view_count', __('View count'));
         $grid->column('order', __('Order'));
+        $grid->column('is_private', __('Private'));
         $grid->column('excerpt', __('Excerpt'));
         $grid->column('slug', __('Slug'));
         $grid->column('created_at', __('Created at'));
@@ -58,6 +59,7 @@ class TopicsController extends AdminController
         $show->field('category_id', __('Category id'));
         $show->field('view_count', __('View count'));
         $show->field('order', __('Order'));
+        $show->field('is_private', __('Private'));
         $show->field('excerpt', __('Excerpt'));
         $show->field('slug', __('Slug'));
         $show->field('created_at', __('Created at'));
@@ -81,6 +83,7 @@ class TopicsController extends AdminController
         $form->number('category_id', __('Category id'));
         $form->number('view_count', __('View count'));
         $form->number('order', __('Order'));
+        $form->number('is_private', __('Private'));
         $form->textarea('excerpt', __('Excerpt'));
         $form->text('slug', __('Slug'));
 
