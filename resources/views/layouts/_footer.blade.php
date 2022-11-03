@@ -1,5 +1,5 @@
 <footer id="footer" class="footer">
-  <div class="container">
+  <div class="container" style="text-align: center;">
     <div class="row">
     <p class="col">
       由 <a href="jacascript:void(0);" target="_blank">Bianca</a> 设计和编码 <span style="color: #e27575;font-size: 14px;">❤</span>
@@ -11,3 +11,6 @@
     </div>
   </div>
 </footer>
+<style>
+    a{text-decoration:none}
+</style>
