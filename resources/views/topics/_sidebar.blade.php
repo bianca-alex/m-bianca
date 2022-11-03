@@ -1,7 +1,7 @@
 <div class="card" style="width: 18rem; margin-bottom: 20px; background: #fdfbf1!important;">
   <div class="card-body">
     <h5>M - bianca</h5>
-    <p class="text-justify"></p>
+    <p class="text-justify"><a href="{{ route('subscribe.index') }}"><i class="fa fa-bolt" aria-hidden="true"></i> 订阅</a></p>
     <p class="text-justify"></p>
   </div>
 </div>

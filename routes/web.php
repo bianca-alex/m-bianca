@@ -22,6 +22,10 @@ Route::middleware(['auth'])->group(function() {
     Route::post('logout', 'Auth\LoginController@logout')->name('logout');
     Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload_image');
     Route::match(['put', 'post', 'patch'], 'users/storeDraft/{topic?}', 'TopicsController@storeDraft')->name('topics.storeDraft');
+
+    Route::get('subscribe', 'SubscribeController@index')->name('subscribe.index');
+    Route::post('subscribe', 'SubscribeController@subscribe')->name('subscribe.subscribe');
+    Route::post('unsubscribe', 'SubscribeController@unsubscribe')->name('subscribe.unsubscribe');
 });
 
 Route::get('/', 'TopicsController@index')->name('root');

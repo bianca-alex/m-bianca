@@ -12,5 +12,7 @@
   </div>
 </footer>
 <style>
-    a{text-decoration:none}
+    footer a { 
+                text-decoration:none;
+             }
 </style>
