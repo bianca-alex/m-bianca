@@ -23,25 +23,15 @@ class SubscribeController extends Controller
 
     public function subscribe(Request $request)
     {
-        if($request->email != \Auth::user()->email){
-            return redirect()->route('subscribe.index')->with('warning', '邮箱验证失败');
-        }else{
-            //pass
-            $id = \Auth::id();
-            $subscribe = Subscribe::where('user_id',$id)->update(['flag' => 1]);
-            return redirect()->route('root')->with('success', '订阅成功');
-        }
+        $id = \Auth::id();
+        $subscribe = Subscribe::where('user_id',$id)->update(['flag' => 1]);
+        return redirect()->route('root')->with('success', '订阅成功');
     }
 
     public function unsubscribe(Request $request)
     {
-        if($request->email != \Auth::user()->email){
-            return redirect()->route('subscribe.index')->with('warning', '邮箱验证失败');
-        }else{
-            //pass
-            $id = \Auth::id();
-            $subscribe = Subscribe::where('user_id',$id)->update(['flag' => 0]);
-            return redirect()->route('root')->with('success', '取消订阅成功');
-        }
+        $id = \Auth::id();
+        $subscribe = Subscribe::where('user_id',$id)->update(['flag' => 0]);
+        return redirect()->route('root')->with('success', '取消订阅成功');
     }
 }

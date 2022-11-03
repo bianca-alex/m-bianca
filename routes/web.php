@@ -24,8 +24,8 @@ Route::middleware(['auth'])->group(function() {
     Route::match(['put', 'post', 'patch'], 'users/storeDraft/{topic?}', 'TopicsController@storeDraft')->name('topics.storeDraft');
 
     Route::get('subscribe', 'SubscribeController@index')->name('subscribe.index');
-    Route::post('subscribe', 'SubscribeController@subscribe')->name('subscribe.subscribe');
-    Route::post('unsubscribe', 'SubscribeController@unsubscribe')->name('subscribe.unsubscribe');
+    Route::post('subscribe', 'SubscribeController@subscribe')->middleware(['verifyEmail'])->name('subscribe.subscribe');
+    Route::post('unsubscribe', 'SubscribeController@unsubscribe')->middleware(['verifyEmail'])->name('subscribe.unsubscribe');
 });
 
 Route::get('/', 'TopicsController@index')->name('root');
