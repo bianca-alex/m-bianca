@@ -17,4 +17,5 @@ Route::group([
     $router->resource('users', UsersController::class);
     $router->resource('tags', TagController::class);
     $router->resource('categories', CategoryController::class);
+    $router->resource('subscribes', SubscribeController::class);
 });
