@@ -54,14 +54,17 @@ class TopicsController extends AdminController
 
         $show->field('id', __('Id'));
         $show->field('title', __('Title'));
-        $show->field('body', __('Body'));
+        //$show->field('body', __('Body'));
+        /*$show->body()->as(function ($body) {
+            return "<pre>{$body}</pre>";
+        })->badge();*/
         $show->field('user_id', __('User id'));
         $show->field('category_id', __('Category id'));
         $show->field('view_count', __('View count'));
         $show->field('order', __('Order'));
         $show->field('is_private', __('Private'));
         $show->field('excerpt', __('Excerpt'));
-        $show->field('slug', __('Slug'));
+        //$show->field('slug', __('Slug'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -78,14 +81,14 @@ class TopicsController extends AdminController
         $form = new Form(new Topic());
 
         $form->text('title', __('Title'));
-        $form->textarea('body', __('Body'));
+        //$form->editor('body', __('Body'));
         //$form->number('user_id', __('User id'));
         //$form->number('category_id', __('Category id'));
         $form->number('view_count', __('View count'))->min(0);
         //$form->number('order', __('Order'));
         $form->number('is_private', __('Private'))->min(0)->max(1);
-        $form->textarea('excerpt', __('Excerpt'));
-        $form->text('slug', __('Slug'));
+        //$form->textarea('excerpt', __('Excerpt'));
+        //$form->text('slug', __('Slug'));
 
         return $form;
     }

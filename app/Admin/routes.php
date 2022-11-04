@@ -16,4 +16,5 @@ Route::group([
     $router->resource('good-sentences', SentencesController::class);
     $router->resource('users', UsersController::class);
     $router->resource('tags', TagController::class);
+    $router->resource('categories', CategoryController::class);
 });
