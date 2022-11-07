@@ -21,10 +21,17 @@ class SubscribeController extends Controller
         return view('subscribes.subscribe', compact('subscribe_flag')); 
     }
 
-    public function subscribe(Request $request)
+    public function subscribe(Request $request,Subscribe $subscribe)
     {
         $id = \Auth::id();
-        $subscribe = Subscribe::where('user_id',$id)->update(['flag' => 1]);
+        $s_id = Subscribe::where('user_id',$id)->first('id');
+        if($s_id){
+            $subscribe = Subscribe::where('user_id',$id)->update(['flag' => 1]);
+        }else{
+            $subscribe->user_id = $id;
+            $subscribe->flag = 1;
+            $subscribe->save();
+        }
         return redirect()->route('root')->with('success', '订阅成功');
     }
 

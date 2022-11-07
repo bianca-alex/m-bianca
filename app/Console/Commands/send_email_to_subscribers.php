@@ -1,18 +1,21 @@
 <?php
 
 namespace App\Console\Commands;
-use App\Models\Topic;
 
 use Illuminate\Console\Command;
+use App\Models\Topic;
+use App\Models\Subscribe;
+use Carbon\Carbon;
+use App\Mail\SendSubscribers;
 
-class save_topic_view_to_db extends Command
+class send_email_to_subscribers extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'save_topic_view_to_db';
+    protected $signature = 'send_email_to_subscribers';
 
     /**
      * The console command description.
@@ -38,11 +41,14 @@ class save_topic_view_to_db extends Command
      */
     public function handle()
     {
-        $topics = Topic::all();
-        foreach($topics as $topic){
-            $view_count = visits($topic)->count();
-            $topic->view_count = $view_count;
-    	    $topic->save();
+
+        $topics = Topic::where('created_at', '>', Carbon::now()->subDays(7))->get(['id','title','created_at']);
+        $data = [];
+        $data['topics'] = $topics;
+        $subscribes = Subscribe::where('flag','1')->get();
+        foreach($subscribes as $subscribe){
+            $data['user'] = $subscribe->user->email;
+            \Mail::send(new SendSubscribers($data));
         }
     }
 }

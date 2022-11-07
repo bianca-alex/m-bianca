@@ -21275,11 +21275,11 @@ readers do not read off random characters that represent icons */
 }
 
 /* universal */
-@media (min-width: 1200px) {
+/*@media (min-width: 1200px) {
   .container-xl, .container-lg, .container-md, .container-sm, .container {
     max-width: 960px;
   }
-}
+}*/
 body {
   font-family: Helvetica, "Microsoft YaHei", Arial, sans-serif;
   font-size: 15px;

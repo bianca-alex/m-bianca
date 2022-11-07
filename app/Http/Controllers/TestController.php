@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
+use App\Models\Topic;
+use App\Models\Subscribe;
+use Carbon\Carbon;
+use App\Mail\SendSubscribers;
 
 class TestController extends Controller
 {
@@ -14,7 +18,8 @@ class TestController extends Controller
         //echo \Cookie::get('m_bianca_Abtest');
 
 
-        session(['key' => 'value']);
-        var_dump($request->session()->all());
+        //session(['key' => 'value']);
+        //var_dump($request->session()->all());
+
     }
 }

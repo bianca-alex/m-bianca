@@ -17,6 +17,9 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('save_topic_view_to_db')->hourly();
+        $schedule->command('send_email_to_subscribers')
+                 ->weeklyOn(7,'8:00')
+                 ->sendOutputTo('/tmp/send_email_to_subscribers.log');
     }
 
     /**
