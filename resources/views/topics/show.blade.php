@@ -42,7 +42,13 @@
           </div>
           @endcan
         </div>
+        <p id="myBtn" style="display: none;" class="btn_pagetop top_button">
+            <a href="#top">Top</a>
+        </p>
       </div>
+    </div>
+    <div class="col-lg-3 col-md-3 sidebar">
+      @include('topics._sidebar_show')
     </div>
   </div>
 @stop
@@ -55,4 +61,14 @@
 @section('scripts')
   <script src="{{ asset('js/highlight.min.js') }}"></script>
   <script>hljs.highlightAll();</script>
+  <script>
+    window.onscroll = function() {scrollFunction()};
+    function scrollFunction() {
+      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        document.getElementById("myBtn").style.display = "block";
+      } else {
+        document.getElementById("myBtn").style.display = "none";
+      }
+    }
+  </script>
 @stop

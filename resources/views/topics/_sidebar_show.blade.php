@@ -43,13 +43,3 @@
     <li class="list-group-item"> ૮(˶ᵔ ᵕ ᵔ˶)ა&nbsp;&nbsp;&nbsp;&nbsp;技术分享</li>
   </ul>
 </div>
-<div class="card" style="width: 18rem;">
-  <div class="d-flex justify-content-between bg-transparent  card-header">
-    <strong>热门标签</strong>
-  </div>
-  <div class="p-3 card-body">
-    @foreach($tags as $tag)
-    <label style="margin-bottom: 15px;"><a href="{{ route('topics.tags') }}?search={{ $tag->tag_name }}" style="margin-right: 10px; background-color: #dbf4db; color: #686565; padding: 5px; border-radius: 5px; text-decoration: none;">{{ $tag->tag_name }}</a></label>
-    @endforeach
-  </div>
-</div>

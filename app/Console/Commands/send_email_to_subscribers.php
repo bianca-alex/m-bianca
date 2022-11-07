@@ -42,7 +42,11 @@ class send_email_to_subscribers extends Command
     public function handle()
     {
 
-        $topics = Topic::where('created_at', '>', Carbon::now()->subDays(7))->get(['id','title','created_at']);
+        $topics = Topic::where('created_at', '>', Carbon::now()
+                    ->subDays(7))
+                    ->where('is_show', 1)
+                    ->where('is_private', 0)
+                    ->get(['id','title','created_at']);
         $data = [];
         $data['topics'] = $topics;
         $subscribes = Subscribe::where('flag','1')->get();
