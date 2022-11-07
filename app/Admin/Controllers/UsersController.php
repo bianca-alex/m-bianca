@@ -73,6 +73,11 @@ class UsersController extends AdminController
         $form->email('email', __('Email'));
         $form->datetime('email_verified_at', __('Email verified at'))->default(date('Y-m-d H:i:s'));
         $form->password('password', __('Password'));
+        $form->saving(function (Form $form) {
+            if ($form->password && $form->model()->password != $form->password) {
+                $form->password = \Hash::make($form->password);
+            }
+        });
         $form->text('remember_token', __('Remember token'));
 
         return $form;

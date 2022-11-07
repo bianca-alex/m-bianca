@@ -1,11 +1,11 @@
 <div class="card" style="width: 18rem; margin-bottom: 20px; background: #fdfbf1!important;">
   <div class="card-body">
-    <h5>M - bianca</h5>
-    @guest
-    @else
-    <p class="text-justify"><a href="{{ route('subscribe.index') }}"><i class="fa fa-bolt" aria-hidden="true"></i> 订阅</a></p>
-    @endguest
-    <p class="text-justify"></p>
+    <h5>文章标签</h5>
+    @if (count($topic->arr_tags)>0)
+      @foreach($topic->arr_tags as $tag)
+        <a href="{{ route('topics.tags') }}?search={{ $tag }}" style="margin-right: 10px; background-color: #dbf4db; color: #686565; padding: 5px; border-radius: 5px; text-decoration: none;">{{ $tag }}</a> 
+      @endforeach
+    @endif
   </div>
 </div>
 <div class="card" style="width: 18rem; margin-bottom: 20px;">

@@ -7,7 +7,7 @@
     <title>m-bianca 订阅周刊</title>
 </head>
 <body>
-    <h1>本周最新的内容有</h1>
+    <h1>最新内容</h1>
     @foreach($data['topics'] as $topic)
     <li><a href="https://www.m-bianca.top/topics/{{$topic->id}}">{{ $topic->title }}</a></li>
     @endforeach
