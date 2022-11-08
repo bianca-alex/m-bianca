@@ -14,16 +14,9 @@ use App\Handlers\ImageUploadHandler;
 class TopicsController extends Controller
 {
     //
-    public function index(Topic $topic, Request $request, User $user)
+    public function index(Topic $topic, Request $request)
     {
-        if(\Auth::check()){
-            $query = Topic::query()->withOrder($request->order)->where('is_show', 1);
-        }else{
-            $query = Topic::query()->withOrder($request->order)->where('is_show', 1)->where('is_private', 0);
-        }
-        if ($request->filled('search')){
-            $query->whereFullText(['tags', 'title','body_orign'],$request->search);
-        }
+        $query = $topic->showWhere($request);
         $topics = $query->with('user', 'category')
  	        	    ->paginate(10);
         $categories = Category::all();
@@ -41,23 +34,10 @@ class TopicsController extends Controller
         $tags = Tag::orderBy('num','DESC')->limit(10)->get();
         return view('topics.index', compact('topics', 'categories', 'is_draft', 'tags'));
     }
-
+    
     public function tagsSearch(Topic $topic, Request $request)
     {
-        if(\Auth::check()){
-            $query = Topic::query()->withOrder($request->order)->where('is_show', 1);
-        }else{
-            $query = Topic::query()->withOrder($request->order)->where('is_show', 1)->where('is_private', 0);
-        }
-        if ($request->filled('search')){
-            $query->whereFullText(['tags', 'title','body_orign'],$request->search);
-        }
-        $topics = $query->with('user', 'category')
- 	        	    ->paginate(10);
-        $categories = Category::all();
-        $tags = Tag::all();
-        $tags = Tag::orderBy('num','DESC')->limit(10)->get();
-        return view('topics.index', compact('topics', 'categories', 'tags'));
+        return $this->index($topic, $request);
     }
 
     public function show(Topic $topic, Request $request)

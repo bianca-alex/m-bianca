@@ -64,4 +64,18 @@ class Topic extends Model
     {
         return $query->orderBy('view_count', 'desc');
     }
+
+    public function showWhere($request)
+    {
+        if(\Auth::check()){
+            $query = $this->query()->withOrder($request->order)->where('is_show', 1);
+        }else{
+            $query = $this->query()->withOrder($request->order)->where('is_show', 1)->where('is_private', 0);
+        }
+        if ($request->filled('search')){
+            $query->whereFullText(['tags', 'title','body_orign'],$request->search);
+        }
+
+        return $query;
+    }
 }
