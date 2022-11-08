@@ -21,5 +21,8 @@ class TestController extends Controller
         //session(['key' => 'value']);
         //var_dump($request->session()->all());
 
+
+        dd(getdate());
+
     }
 }

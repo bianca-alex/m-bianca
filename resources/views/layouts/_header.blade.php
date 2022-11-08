@@ -27,6 +27,7 @@
       <img src="/images/logo.jpg" alt="love" />
     </div>
     <a href="{{ route('users.drafts') }}" alt="草稿"><i class="fa fa-clipboard" aria-hidden="true"></i></a>
+    <a href="{{ route('users.privateTopic') }}"><i class="fa fa-anchor" aria-hidden="true"></i></a>
     <a href="#" onclick="document.getElementById('logout').submit();">
       <form action="{{ route('logout') }}" method="POST" id="logout">
         {{ csrf_field() }}

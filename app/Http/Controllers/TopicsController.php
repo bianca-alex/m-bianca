@@ -14,9 +14,9 @@ use App\Handlers\ImageUploadHandler;
 class TopicsController extends Controller
 {
     //
-    public function index(Topic $topic, Request $request)
+    public function index(Topic $topic, Request $request, $tag_search = 0)
     {
-        $query = $topic->showWhere($request);
+        $query = $topic->showWhere($request,$tag_search);
         $topics = $query->with('user', 'category')
  	        	    ->paginate(10);
         $categories = Category::all();
@@ -34,10 +34,20 @@ class TopicsController extends Controller
         $tags = Tag::orderBy('num','DESC')->limit(10)->get();
         return view('topics.index', compact('topics', 'categories', 'is_draft', 'tags'));
     }
+
+    public function privateTopic(Topic $topic)
+    {
+        $query = Topic::where('user_id', \Auth::id())->where('is_private', 1);
+        $topics = $query->with('user', 'category')
+                    ->paginate(10);
+        $categories = Category::all();
+        $tags = Tag::orderBy('num','DESC')->limit(10)->get();
+        return view('topics.index', compact('topics', 'categories', 'tags'));
+    }
     
     public function tagsSearch(Topic $topic, Request $request)
     {
-        return $this->index($topic, $request);
+        return $this->index($topic, $request, 1);
     }
 
     public function show(Topic $topic, Request $request)

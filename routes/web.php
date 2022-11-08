@@ -19,6 +19,7 @@ Route::get('test','TestController@index');
 Route::middleware(['auth'])->group(function() {
     Route::resource('topics', 'TopicsController', ['only' => ['create', 'store', 'update', 'edit', 'destroy']]);
     Route::get('users/drafts', 'TopicsController@indexDrafts')->name('users.drafts');
+    Route::get('users/privateTopic', 'TopicsController@privateTopic')->name('users.privateTopic');
     Route::post('logout', 'Auth\LoginController@logout')->name('logout');
     Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload_image');
     Route::match(['put', 'post', 'patch'], 'users/storeDraft/{topic?}', 'TopicsController@storeDraft')->name('topics.storeDraft');

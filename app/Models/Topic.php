@@ -65,14 +65,18 @@ class Topic extends Model
         return $query->orderBy('view_count', 'desc');
     }
 
-    public function showWhere($request)
+    public function showWhere($request,$tag_search = 0)
     {
-        if(\Auth::check()){
+        // is_show
+        /*if(\Auth::check()){
             $query = $this->query()->withOrder($request->order)->where('is_show', 1);
         }else{
             $query = $this->query()->withOrder($request->order)->where('is_show', 1)->where('is_private', 0);
-        }
-        if ($request->filled('search')){
+        }*/
+        $query = $this->query()->withOrder($request->order)->where('is_show', 1)->where('is_private', 0);
+        if ($request->filled('search') && $tag_search){
+            $query->where('tags', 'like','%'.$request->search.'%');
+        }else{
             $query->whereFullText(['tags', 'title','body_orign'],$request->search);
         }
 
