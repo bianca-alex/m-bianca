@@ -76,7 +76,7 @@ class Topic extends Model
         $query = $this->query()->withOrder($request->order)->where('is_show', 1)->where('is_private', 0);
         if ($request->filled('search') && $tag_search){
             $query->where('tags', 'like','%'.$request->search.'%');
-        }else{
+        }else if($request->filled('search')){
             $query->whereFullText(['tags', 'title','body_orign'],$request->search);
         }
 
