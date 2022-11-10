@@ -41,8 +41,9 @@ class TopicsController extends Controller
         $topics = $query->with('user', 'category')
                     ->paginate(10);
         $categories = Category::all();
+        $is_private = true;
         $tags = Tag::orderBy('num','DESC')->limit(10)->get();
-        return view('topics.index', compact('topics', 'categories', 'tags'));
+        return view('topics.index', compact('topics', 'categories', 'tags', 'is_private'));
     }
     
     public function tagsSearch(Topic $topic, Request $request)

@@ -5,9 +5,12 @@
 @section('content')
 <div class="col-lg-9 col-md-9 topic-list" style="margin-bottom: 20px;">
   @if(isset($is_draft))
-
   <ul class="nav justify-content-center" style="font-size: 30px;">
-  草稿
+  我的草稿
+  </ul>
+  @elseif(isset($is_private))
+  <ul class="nav justify-content-center" style="font-size: 30px;">
+  我的私密文章
   </ul>
   @else
   <ul class="nav justify-content-center" style="font-size: 30px;">
