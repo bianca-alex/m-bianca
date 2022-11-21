@@ -9,13 +9,15 @@
         "awssat/laravel-visits": "^4.0",
         "encore/laravel-admin": "^1.8",
         "fruitcake/laravel-cors": "^2.0",
+        "gregwar/captcha": "^1.1",
         "guzzlehttp/guzzle": "^7.0.1",
         "intervention/image": "^2.7",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "mews/purifier": "~3.3",
-        "overtrue/easy-sms": "^2.2"
+        "overtrue/easy-sms": "^2.2",
+        "propaganistas/laravel-phone": "^4.4"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
