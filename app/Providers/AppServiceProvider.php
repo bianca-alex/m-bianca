@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Redis;
 
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\Grammars\MySqlGrammar;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -77,5 +78,7 @@ class AppServiceProvider extends ServiceProvider
             return $this;
         });
         \URL::forceScheme('https');
+
+        JsonResource::withoutWrapping();
     }
 }

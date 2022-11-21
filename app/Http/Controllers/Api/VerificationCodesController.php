@@ -16,7 +16,7 @@ class VerificationCodesController extends Controller
         $code = str_pad(random_int(1,9999), 4, 0, STR_PAD_LEFT);
 
         if(!app()->environment('production')){
-            $code = 8888;
+            $code = '8888';
         }else{
             try {
                 $result = $easysms->send($phone, [
