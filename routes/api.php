@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\UsersController;
 
 use App\Http\Controllers\Api\VerificationCodesController;
 use App\Http\Controllers\Api\CaptchasController;
+use App\Http\Controllers\Api\AuthorizationsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,6 +30,11 @@ Route::prefix('v1')->name('api.v1.')->group(function(){
             // 用户注册
             Route::post('users', [UsersController::class, 'store'])
                 ->name('users.store');
+
+            // 第三方登录
+            Route::post('socials/{social_type}/authorizations', [AuthorizationsController::class,'socialStore'])
+                ->where('social_type', 'wechat')
+                ->name('socials.authorizations.store');
 
             // 小程序登录
             Route::post('weapp/authorizations', [AuthorizationsController::class, 'weappStore'])
