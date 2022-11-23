@@ -29,6 +29,10 @@ Route::prefix('v1')->name('api.v1.')->group(function(){
             // 用户注册
             Route::post('users', [UsersController::class, 'store'])
                 ->name('users.store');
+
+            // 小程序登录
+            Route::post('weapp/authorizations', [AuthorizationsController::class, 'weappStore'])
+                ->name('weapp.authorizations.store');
         });
 
     Route::middleware('throttle:' . config('api.rate_limits.access'))
