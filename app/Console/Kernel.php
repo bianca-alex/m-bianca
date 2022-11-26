@@ -19,7 +19,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('save_topic_view_to_db')->hourly()
                  ->sendOutputTo('/tmp/save_topics_view_to_db.log');
         $schedule->command('send_email_to_subscribers')
-                 ->weeklyOn(7,'8:00')
+                 ->weeklyOn(6,'14:00')
                  ->sendOutputTo('/tmp/send_email_to_subscribers.log');
     }
 
