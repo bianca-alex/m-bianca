@@ -42,6 +42,7 @@ class save_topic_view_to_db extends Command
         foreach($topics as $topic){
             $view_count = visits($topic)->count();
             $topic->view_count = $view_count;
+            $topic->timestamps = false;
     	    $topic->save();
         }
     }

@@ -42,7 +42,7 @@
           </div>
           @endcan
         </div>
-        <p id="myBtn" style="display: none;" class="btn_pagetop top_button">
+        <p id="myBtn" style="display: none; z-index: 1" class="btn_pagetop top_button">
             <a href="#top">Top</a>
         </p>
       </div>

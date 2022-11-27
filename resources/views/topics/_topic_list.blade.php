@@ -24,7 +24,7 @@
                 {{ $topic->category->name }}
               </a>
               <i class="far fa-clock"></i>
-              <span class="timeago" style="margin-right: 20px;" title="最后活跃于：{{ $topic->updated_at }}">{{ $topic->updated_at->diffForHumans() }}</span>
+              <span class="timeago" style="margin-right: 20px;" title="最后活跃于：{{ $topic->created_at }}">{{ $topic->created_at->diffForHumans() }}</span>
             </div>
           </small>
         </div>
