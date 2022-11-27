@@ -22,6 +22,8 @@ class AuthorizationsController extends Controller
         ]);
     }
 
+
+    // 用户登录
     public function store(AuthorizationRequest $request)
     {
         $username = $request->username;
@@ -39,6 +41,7 @@ class AuthorizationsController extends Controller
         return $this->respondWithToken($token)->setStatusCode(201);
     }
 
+    // 微信登录
     public function socialStore($type, SocialAuthorizationRequest $request)
     {
         $driver = \Socialite::create($type);
@@ -89,7 +92,7 @@ class AuthorizationsController extends Controller
         return $this->respondWithToken($token)->setStatusCode(201);
     }
 
-    //
+    // 小程序登录
     public function weappStore(WeappAuthorizationRequest $request)
     {
         $code = $request->code;
