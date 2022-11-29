@@ -34,7 +34,9 @@ class User extends Authenticatable implements JWTSubject
         'email',
         'password',
         'weixin_openid',
-        'weixin_unionid'
+        'weixin_unionid',
+        'weapp_openid',
+        'weixin_session_key'
     ];
 
     /**
@@ -45,6 +47,8 @@ class User extends Authenticatable implements JWTSubject
     protected $hidden = [
         'password',
         'remember_token',
+        'weixin_openid',
+        'weixin_unionid'
     ];
 
     /**
