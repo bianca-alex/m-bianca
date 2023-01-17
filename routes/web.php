@@ -39,3 +39,8 @@ Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
+
+Route::get('/test-socket', function () {
+    event(new \App\Events\ChatEvent('Say Hello')); // 触发一下即可
+    return view('welcome');
+});

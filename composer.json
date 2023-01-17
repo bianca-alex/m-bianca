@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "awssat/laravel-visits": "^4.0",
+        "beyondcode/laravel-websockets": "^1.13",
         "encore/laravel-admin": "^1.8",
         "fruitcake/laravel-cors": "^2.0",
         "gregwar/captcha": "^1.1",
@@ -20,7 +21,8 @@
         "overtrue/laravel-socialite": "~3.0",
         "overtrue/laravel-wechat": "^7.1",
         "php-open-source-saver/jwt-auth": "^2.0",
-        "propaganistas/laravel-phone": "^4.4"
+        "propaganistas/laravel-phone": "^4.4",
+        "pusher/pusher-php-server": "^7.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
