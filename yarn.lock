@@ -4951,6 +4951,21 @@
   "resolved" "https://registry.npmmirror.com/thunky/-/thunky-1.1.0.tgz"
   "version" "1.1.0"
 
+"tim-js-sdk@^2.26.0":
+  "integrity" "sha512-5onix9RTIn2+TRL/O/xn2crx4IRfcy6DA+Sga5FFJ1qtDLNqDDQtmFqIL+IqZJ+YK4XlDjwARNqRcaN+beTtFw=="
+  "resolved" "https://registry.npmmirror.com/tim-js-sdk/-/tim-js-sdk-2.26.0.tgz"
+  "version" "2.26.0"
+
+"tim-profanity-filter-plugin@^0.9.0":
+  "integrity" "sha512-SDlV3nJfOyohjg4stPMQDZ893WVgvlSwnSqY8hQhbcj80K+joFfeyRKKEkuRhvYWR0f2kn4MM1E0spnQjKN5bg=="
+  "resolved" "https://registry.npmmirror.com/tim-profanity-filter-plugin/-/tim-profanity-filter-plugin-0.9.0.tgz"
+  "version" "0.9.0"
+
+"tim-upload-plugin@^1.0.6":
+  "integrity" "sha512-yO85EmYQB/lyKo3h90Lruw9VX7RagwJ7QSlCLaiD8KWBsZZaTpuZpr54xw+m5U6TlGwN3/wO8Q4bRmYncLoOnQ=="
+  "resolved" "https://registry.npmmirror.com/tim-upload-plugin/-/tim-upload-plugin-1.0.6.tgz"
+  "version" "1.0.6"
+
 "timers-browserify@^2.0.4":
   "integrity" "sha512-9phl76Cqm6FhSX9Xe1ZUAMLtm1BLkKj2Qd5ApyWkXzsMRaA7dgr81kf4wJmQf/hAvg8EEyJxDo3du/0KlhPiKQ=="
   "resolved" "https://registry.npmmirror.com/timers-browserify/-/timers-browserify-2.0.12.tgz"

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ImController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('test','TestController@index');
 
-
-
 Route::middleware(['auth'])->group(function() {
     Route::resource('topics', 'TopicsController', ['only' => ['create', 'store', 'update', 'edit', 'destroy']]);
     Route::get('users/drafts', 'TopicsController@indexDrafts')->name('users.drafts');
@@ -27,6 +26,15 @@ Route::middleware(['auth'])->group(function() {
     Route::get('subscribe', 'SubscribeController@index')->name('subscribe.index');
     Route::post('subscribe', 'SubscribeController@subscribe')->middleware(['verifyEmail'])->name('subscribe.subscribe');
     Route::post('unsubscribe', 'SubscribeController@unsubscribe')->middleware(['verifyEmail'])->name('subscribe.unsubscribe');
+
+    Route::get('im', function(){
+        $user = \Auth::user();
+        $accid = $user->accid;
+        $users = \App\Models\User::all();
+        $users = $users->except([$user->id]);
+        return view('im.index',compact('accid','users'));
+    });
+    Route::get('get-user-sig', [ImController::class, 'getUserSig']);
 });
 
 Route::get('/', 'TopicsController@index')->name('root');

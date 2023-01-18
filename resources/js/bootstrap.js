@@ -31,3 +31,18 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+import TIM from 'tim-js-sdk';
+//import TIMUploadPlugin from 'tim-upload-plugin';
+//import TIMProfanityFilterPlugin from 'tim-profanity-filter-plugin';
+
+window.TIM = TIM;
+let options = {
+    SDKAppID: 1400775925 // 接入时需要将0替换为您的即时通信 IM 应用的 SDKAppID
+};
+
+window.tim = TIM.create(options); // SDK 实例通常用 tim 表示
+
+tim.setLogLevel(1); // 普通级别，日志量较多，接入时建议使用
+
+

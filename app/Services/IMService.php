@@ -28,10 +28,10 @@ class IMService
     }
 
     // 生成usersig
-    public function genUserSig($user_name)
+    public function genUserSig($accid)
     {
         $tencent_serv = new TLSSigAPIv2($this->_app_key, $this->_app_secret);
-        return $tencent_serv->genUserSig($user_name);
+        return $tencent_serv->genUserSig($accid);
     }
 
     // 创建im账号

@@ -67,6 +67,9 @@ Route::prefix('v1')->name('api.v1.')->group(function(){
                 // 当前登录用户信息
                 Route::get('user', [UsersController::class, 'me'])
                     ->name('user.show');
+
             });
         });
 });
+
+
