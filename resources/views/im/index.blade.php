@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div>
+    <div id="message-body" style="display: none;">
         <label for="">请选择用户：</label>
         <select name="" id="select_user">
             @foreach ($users as $user)
@@ -43,7 +43,8 @@
             .then(function(response){
                 let promise = tim.login({userID: '{{$accid}}', userSig: ' ' + response.data.usersig});
                 promise.then(function(imResponse) {
-                    // console.log(imResponse.data); // 登录成功
+                    console.log(imResponse.data); // 登录成功
+                    $('#message-body').css('display','block');
                     if (imResponse.data.repeatLogin === true) {
                         // 标识帐号已登录，本次登录操作为重复登录。v2.5.1 起支持
                         // console.log(imResponse.data.errorInfo);

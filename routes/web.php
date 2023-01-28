@@ -31,6 +31,10 @@ Route::middleware(['auth'])->group(function() {
         $user = \Auth::user();
         $accid = $user->accid;
         $users = \App\Models\User::all();
+
+        //$users = \App\Models\User::Where('accid','<>','')->pluck('accid');
+        //$im = new App\Services\IMService();
+        //$res = $im->getOnlineStatus($users->toArray());
         $users = $users->except([$user->id]);
         return view('im.index',compact('accid','users'));
     });

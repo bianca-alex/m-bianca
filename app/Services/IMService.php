@@ -53,6 +53,19 @@ class IMService
 
         return ['status' => 400,'message' => 'Im注册失败'];
     }
+    
+    // 判断用户在线状态
+    public function getOnlineStatus($user_ids)
+    {
+        $admin_sig = $this->genUserSig($this->_admin);
+        $url = $this->_url . 'openim/query_online_status?sdkappid=' . $this->_app_key
+                           . '&identifier=' . $this->_admin . '&usersig=' . $admin_sig . '&random=' . random_int(1, 9999) . '&contenttype=json';
+        $response = $this->_http($url, [
+            'To_Account' => $user_ids,
+        ]);
+        if ($response['ErrorCode'] == 0)
+            return ['QueryResult' => $response['QueryResult']];
+    }
 
     protected function _http($url, $body)
     {

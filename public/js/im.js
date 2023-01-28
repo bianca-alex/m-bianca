@@ -6,7 +6,7 @@ function received_message()
         messageList.forEach((message) => {
             if (message.type === TIM.TYPES.MSG_TEXT) {
                 // 文本消息 - https://web.sdk.qcloud.com/im/doc/zh-cn/Message.html#.TextPayload
-                $('#show').append('<b style="color:#bd9393;float:right;">' + message.payload.text + '</b><br/>');
+                $('#show').append('<b style="color:#bd9393;float:right;">' + message.nick + ': ' +  message.payload.text + '</b><br/>');
                 $('#show').height($('.show-message').height());
                 console.log(message.payload.text);
             }
@@ -29,6 +29,7 @@ function send_user(user_id, mess)
 
     let promise = tim.sendMessage(message);
     promise.then(function(imResponse) {
+        console.log(imResponse);
         // 发送成功
         $('#show').append('<b style="color:#8fd7d8;">' + imResponse.data.message.payload.text + '</b><br/>');
         $('#show').height($('.show-message').height());

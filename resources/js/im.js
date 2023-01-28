@@ -1,5 +1,4 @@
-function send_user($user_id){
-    console.log('xxxx');
+/*function send_user($user_id){
     let onSdkReady = function(event) {
         let message = tim.createTextMessage({ to: $user_id, conversationType: 'C2C', payload: { text: 'Hello world!' }});
         let promise = tim.sendMessage(message);
@@ -12,5 +11,5 @@ function send_user($user_id){
         });
     };
     tim.on(TIM.EVENT.SDK_READY, onSdkReady);
-}
+}*/
 
