@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
     <div id="message-body" style="display: none;">
-        <label for="">请选择用户：</label>
-        <select name="" id="select_user">
+        <select name="" id="select_user" class="form-select form-select-lg mb-3" aria-label="Default select example">
+            <option value="">请选择对话用户 ^_^ </option>
             @foreach ($users as $user)
                 <option value="{{$user->accid}}">{{$user->name}}</option>
             @endforeach
@@ -14,7 +14,7 @@
             </div>
             <br />
         </div>
-        <div class="sendbutton">
+        <div class="sendbutton" style="display: none;">
             <input type="text" id="message" maxlength="50">
             <input type="button" value="send" id="send">
         </div>
@@ -26,6 +26,7 @@
         width: 500px;
         margin: 0 auto;
         border-top: 2px solid;
+        padding-top: 15px;
     }
     
     .sendbutton {
@@ -34,6 +35,30 @@
         right: 50;
         z-index: 100;
     }
+    
+    .message-text-rece {
+        border: solid;
+        border-radius: 10px;
+        background: #efefef;
+        min-height: 25px;
+        padding: 9px 10px;
+        align-items: center;
+        color:#bd9393;
+        float:right;
+        margin-top: 10px;
+    }
+
+    .message-text {
+        border: solid;
+        border-radius: 10px;
+        background: #efefef;
+        min-height: 25px;
+        padding: 9px 10px;
+        align-items: center;
+        color:#8fd7d8;
+        margin-top: 10px;
+    }
+
 </style>
 @section('scripts')
     <script src="/js/im.js"></script>
