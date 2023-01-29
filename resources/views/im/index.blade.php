@@ -12,14 +12,23 @@
         <div class="im-app" id="im-app">
         </div>
         <div class="sendbutton" style="display: none;">
-            <input type="text" id="message" maxlength="50">
-            <input type="button" value="send" id="send">
+            <input type="text" style="float: left; width:150px;" class="form-control" id="message" placeholder="Say ..." aria-label="Recipient's username" maxlength="60" aria-describedby="send">
+            <button class="btn btn-outline-secondary" type="button" id="send">Send</button>
         </div>
     </div>
 @endsection
 <style>
+    #message-body {
+        width: 80%;    
+    }
+
+    .im-app {
+        max-height: calc(50vh);
+        overflow-y: auto;
+    }
+
     .show-message {
-        width: 500px;
+        /*width: 500px;*/
         margin: 0 auto;
         border-top: 2px solid;
         padding-top: 15px;

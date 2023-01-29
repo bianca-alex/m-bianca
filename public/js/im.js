@@ -7,6 +7,8 @@ function received_message()
             if (message.type === TIM.TYPES.MSG_TEXT) {
                 // 文本消息 - https://web.sdk.qcloud.com/im/doc/zh-cn/Message.html#.TextPayload
                 $('#im-body-' +message.nick+ ' .show').append('<label class="message-text-rece"><b>' + message.nick + ': ' +  message.payload.text + '</b></label><br /><br /><br />');
+                height = $('#im-app').prop("scrollHeight")
+                $('#im-app').scrollTop(height);
                 //console.log(message.payload.text);
                 //console.log('#im-body-' +message.nick+ ' .show');
             }
@@ -32,6 +34,8 @@ function send_user(user_id, user_name, mess)
         //console.log(imResponse);
         // 发送成功
         $('#im-body-' +user_name+ ' .show').append('<label class="message-text"><b>' + imResponse.data.message.payload.text + '</b></label><br />');
+        height = $('#im-app').prop("scrollHeight")
+        $('#im-app').scrollTop(height);
     }).catch(function(imError) {
         // 发送失败
         // console.warn('sendMessage error:', imError);
