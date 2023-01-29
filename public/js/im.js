@@ -6,11 +6,26 @@ function received_message()
         messageList.forEach((message) => {
             if (message.type === TIM.TYPES.MSG_TEXT) {
                 // 文本消息 - https://web.sdk.qcloud.com/im/doc/zh-cn/Message.html#.TextPayload
-                $('#im-body-' +message.nick+ ' .show').append('<label class="message-text-rece"><b>' + message.nick + ': ' +  message.payload.text + '</b></label><br /><br /><br />');
+                //$('#im-body-' +message.nick+ ' .show').append('<label class="message-text-rece"><b>' + message.nick + ': ' + message.payload.text + '</b></label><br /><br /><br />');
+                if($('#im-body-' +message.nick).length){
+
+                }else{
+                    //show_im(message.nick); 
+                    ele = `<div id="im-body-` + message.nick + `" style="display:none;">
+                              <div class="show-message">
+                                <div class="show">
+                                </div>
+                                <br />
+                              </div>
+                          </div>`;
+                    $('#im-app').append(ele);
+                    $('#popup-message strong').text(message.nick + '上线啦~  Say: ' + message.payload.text);
+                    $('#popup-message').css('display', 'block');
+                }
+                $('#im-body-' +message.nick + ' .show').append('<label class="message-text-rece"><b>' + message.payload.text + '</b></label><br /><br /><br />');
                 height = $('#im-app').prop("scrollHeight")
                 $('#im-app').scrollTop(height);
-                //console.log(message.payload.text);
-                //console.log('#im-body-' +message.nick+ ' .show');
+                console.log(message.payload.text);
             }
          });
      };

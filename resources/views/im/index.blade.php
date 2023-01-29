@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('content')
+
+
     <div id="message-body" style="display: none;">
+        <div class="alert alert-success alert-dismissible" id="popup-message" style="display:none;">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong></strong>
+        </div>
         <select name="" id="select_user" class="form-select form-select-lg mb-3" aria-label="Default select example">
             <option value="">请选择对话用户 ^_^ </option>
             @foreach ($users as $user)
