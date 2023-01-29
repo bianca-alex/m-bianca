@@ -6,9 +6,9 @@ function received_message()
         messageList.forEach((message) => {
             if (message.type === TIM.TYPES.MSG_TEXT) {
                 // 文本消息 - https://web.sdk.qcloud.com/im/doc/zh-cn/Message.html#.TextPayload
-                $('#show').append('<label class="message-text-rece"><b>' + message.nick + ': ' +  message.payload.text + '</b></label><br /><br /><br />');
-                $('#show').height($('.show-message').height());
-                console.log(message.payload.text);
+                $('#im-body-' +message.nick+ ' .show').append('<label class="message-text-rece"><b>' + message.nick + ': ' +  message.payload.text + '</b></label><br /><br /><br />');
+                //console.log(message.payload.text);
+                //console.log('#im-body-' +message.nick+ ' .show');
             }
          });
      };
@@ -16,7 +16,7 @@ function received_message()
 }
 received_message(); 
 
-function send_user(user_id, mess)
+function send_user(user_id, user_name, mess)
 {
     let message = tim.createTextMessage({
         to: user_id,
@@ -29,28 +29,50 @@ function send_user(user_id, mess)
 
     let promise = tim.sendMessage(message);
     promise.then(function(imResponse) {
-        console.log(imResponse);
+        //console.log(imResponse);
         // 发送成功
-        $('#show').append('<label class="message-text"><b>' + imResponse.data.message.payload.text + '</b></label><br />');
-        $('#show').height($('.show-message').height());
+        $('#im-body-' +user_name+ ' .show').append('<label class="message-text"><b>' + imResponse.data.message.payload.text + '</b></label><br />');
     }).catch(function(imError) {
         // 发送失败
         // console.warn('sendMessage error:', imError);
     });
 }
 
+function show_im(user_name) 
+{
+    let ele_length = $('#im-body-'+user_name).length;
+    if(!ele_length){
+        ele = `<div id="im-body-` + user_name + `">
+                  <div class="show-message">
+                      <div class="show">
+                      </div>
+                      <br />
+                  </div>
+              </div>`;
+        $('#im-app').append(ele);
+    }
+    $('#im-app').children().each(function(){
+        $(this).css('display', 'none');
+    });
+    $('#im-body-'+user_name).css('display', 'block');
+}
+
 $('#send').click(function(){
     let user_id = $('#select_user').val();
+    let user_name = $('#select_user').find("option:selected").text();;
     let mess = $('#message').val()
-    send_user(user_id, mess);
+    send_user(user_id, user_name, mess);
 });
 
 $('#select_user').click(function(){
     let user_id = $('#select_user').val();
     if(user_id){
-        console.log(user_id);
+        let user_name = $('#select_user').find("option:selected").text();;
+        console.log('xxx' + user_name);
+
+        show_im(user_name);
         $('.sendbutton').css('display', 'block');
         $('#footer').css('display', 'none');
-        $(this).css('display', 'none');
+        //$(this).css('display', 'none');
     }
 });

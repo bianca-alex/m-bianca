@@ -9,15 +9,11 @@
         </select>
         <br />
         <br />
-        <div class="show-message">
-            <div id="show">
-            </div>
-            <br />
+        <div class="im-app" id="im-app">
         </div>
         <div class="sendbutton" style="display: none;">
             <input type="text" id="message" maxlength="50">
             <input type="button" value="send" id="send">
-        </div>
         </div>
     </div>
 @endsection
