@@ -1,7 +1,6 @@
 @extends('layouts.app')
+@section('title', 'IM')
 @section('content')
-
-
     <div id="message-body" style="display: none;">
         <div class="alert alert-success alert-dismissible" id="popup-message" style="display:none;">
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -23,57 +22,8 @@
         </div>
     </div>
 @endsection
-<style>
-    #message-body {
-        width: 80%;    
-    }
-
-    .im-app {
-        max-height: calc(50vh);
-        overflow-y: auto;
-    }
-
-    .show-message {
-        /*width: 500px;*/
-        margin: 0 auto;
-        border-top: 2px solid;
-        padding-top: 15px;
-    }
-    
-    .sendbutton {
-        position: fixed;
-        bottom: 100;
-        right: 50;
-        z-index: 100;
-    }
-    
-    .message-text-rece {
-        border: solid;
-        border-radius: 10px;
-        background: #efefef;
-        min-height: 25px;
-        padding: 9px 10px;
-        align-items: center;
-        color:#bd9393;
-        float:right;
-        margin-top: 10px;
-    }
-
-    .message-text {
-        border: solid;
-        border-radius: 10px;
-        background: #efefef;
-        min-height: 25px;
-        padding: 9px 10px;
-        align-items: center;
-        color:#8fd7d8;
-        margin-top: 10px;
-    }
-
-</style>
 @section('scripts')
     <script src="/js/im.js"></script>
-
     <script>
         axios.get('/get-user-sig')
             .then(function(response){
@@ -95,7 +45,5 @@
                 });
 
             });
-    </script>
-    <script>
     </script>
 @stop

@@ -9,10 +9,10 @@ use App\Services\IMService;
 class ImController extends Controller
 {
     //
-    public function getUserSig()
+    /*public function getUserSig()
     {
         $im = new IMService();
         $user = \Auth::user();
         return ['status' => 200, 'usersig' => $im->genUserSig($user->accid)];
-    }
+    }*/
 }

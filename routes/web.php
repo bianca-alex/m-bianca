@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\ImController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,19 +26,8 @@ Route::middleware(['auth'])->group(function() {
     Route::post('subscribe', 'SubscribeController@subscribe')->middleware(['verifyEmail'])->name('subscribe.subscribe');
     Route::post('unsubscribe', 'SubscribeController@unsubscribe')->middleware(['verifyEmail'])->name('subscribe.unsubscribe');
 
-    Route::get('im', function(){
-        $user = \Auth::user();
-        $accid = $user->accid;
-        $users = \App\Models\User::all();
-
-        //$users = \App\Models\User::Where('accid','<>','')->pluck('accid');
-        //$im = new App\Services\IMService();
-        //$res = $im->getOnlineStatus($users->toArray());
-        //dd($res);
-        $users = $users->except([$user->id]);
-        return view('im.index',compact('accid','users'));
-    });
-    Route::get('get-user-sig', [ImController::class, 'getUserSig']);
+    Route::get('im','ImController@index')->name('im');
+    Route::get('get-user-sig', 'ImController@getUserSig');
 });
 
 Route::get('/', 'TopicsController@index')->name('root');

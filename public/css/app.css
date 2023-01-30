@@ -21355,27 +21355,63 @@ body {
 }
 
 /* Topic Index Page */
-.topics-index-page .topic-list .nav > li > a, .root-page .topic-list .nav > li > a, .categories-show-page .topic-list .nav > li > a, .users-drafts-page .topic-list .nav > li > a, .topics-tags-page .topic-list .nav > li > a, .users-privateTopic-page .topic-list .nav > li > a {
+.topics-index-page .topic-list .nav > li > a,
+.root-page .topic-list .nav > li > a,
+.categories-show-page .topic-list .nav > li > a,
+.users-drafts-page .topic-list .nav > li > a,
+.topics-tags-page .topic-list .nav > li > a,
+.users-privateTopic-page .topic-list .nav > li > a,
+.im-page .topic-list .nav > li > a {
   position: relative;
   display: block;
   padding: 5px 14px;
   font-size: 0.9em;
 }
-.topics-index-page .topic-list a, .root-page .topic-list a, .categories-show-page .topic-list a, .users-drafts-page .topic-list a, .topics-tags-page .topic-list a, .users-privateTopic-page .topic-list a {
+.topics-index-page .topic-list a,
+.root-page .topic-list a,
+.categories-show-page .topic-list a,
+.users-drafts-page .topic-list a,
+.topics-tags-page .topic-list a,
+.users-privateTopic-page .topic-list a,
+.im-page .topic-list a {
   color: #444444;
   text-decoration: none;
 }
-.topics-index-page .topic-list .meta, .root-page .topic-list .meta, .categories-show-page .topic-list .meta, .users-drafts-page .topic-list .meta, .topics-tags-page .topic-list .meta, .users-privateTopic-page .topic-list .meta {
+.topics-index-page .topic-list .meta,
+.root-page .topic-list .meta,
+.categories-show-page .topic-list .meta,
+.users-drafts-page .topic-list .meta,
+.topics-tags-page .topic-list .meta,
+.users-privateTopic-page .topic-list .meta,
+.im-page .topic-list .meta {
   font-size: 0.9em;
   color: #b3b3b3;
 }
-.topics-index-page .topic-list .meta a, .root-page .topic-list .meta a, .categories-show-page .topic-list .meta a, .users-drafts-page .topic-list .meta a, .topics-tags-page .topic-list .meta a, .users-privateTopic-page .topic-list .meta a {
+.topics-index-page .topic-list .meta a,
+.root-page .topic-list .meta a,
+.categories-show-page .topic-list .meta a,
+.users-drafts-page .topic-list .meta a,
+.topics-tags-page .topic-list .meta a,
+.users-privateTopic-page .topic-list .meta a,
+.im-page .topic-list .meta a {
   color: #b3b3b3;
 }
-.topics-index-page .topic-list .badge, .root-page .topic-list .badge, .categories-show-page .topic-list .badge, .users-drafts-page .topic-list .badge, .topics-tags-page .topic-list .badge, .users-privateTopic-page .topic-list .badge {
+.topics-index-page .topic-list .badge,
+.root-page .topic-list .badge,
+.categories-show-page .topic-list .badge,
+.users-drafts-page .topic-list .badge,
+.topics-tags-page .topic-list .badge,
+.users-privateTopic-page .topic-list .badge,
+.im-page .topic-list .badge {
   background-color: #d8d8d8 !important;
 }
-.topics-index-page .topic-list hr, .root-page .topic-list hr, .categories-show-page .topic-list hr, .users-drafts-page .topic-list hr, .topics-tags-page .topic-list hr, .users-privateTopic-page .topic-list hr {
+.topics-index-page .topic-list hr,
+.root-page .topic-list hr,
+.categories-show-page .topic-list hr,
+.users-drafts-page .topic-list hr,
+.topics-tags-page .topic-list hr,
+.users-privateTopic-page .topic-list hr,
+.im-page .topic-list hr {
   margin-top: 12px;
   margin-bottom: 12px;
   border: 0;
@@ -21457,4 +21493,45 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 
 .fa-clipboard::before {
   color: #bd9393;
+}
+
+#message-body {
+  width: 80%;
+}
+#message-body .im-app {
+  max-height: 50vh;
+  overflow-y: auto;
+}
+#message-body .show-message {
+  /*width: 500px;*/
+  margin: 0 auto;
+  border-top: 2px solid;
+  padding-top: 15px;
+}
+#message-body .sendbutton {
+  position: fixed;
+  bottom: 100px !important;
+  right: 50px !important;
+  z-index: 100;
+}
+#message-body .message-text-rece {
+  border: solid;
+  border-radius: 10px;
+  background: #efefef;
+  min-height: 25px;
+  padding: 9px 10px;
+  align-items: center;
+  color: #bd9393;
+  float: right;
+  margin-top: 10px;
+}
+#message-body .message-text {
+  border: solid;
+  border-radius: 10px;
+  background: #efefef;
+  min-height: 25px;
+  padding: 9px 10px;
+  align-items: center;
+  color: #8fd7d8;
+  margin-top: 10px;
 }

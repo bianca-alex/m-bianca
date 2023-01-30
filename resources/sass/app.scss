@@ -57,7 +57,7 @@ body {
 
 .circle > img{
   width: 100%;
-   height: 100%;
+  height: 100%;
 }
 
 .footer {
@@ -84,7 +84,13 @@ body {
 }
 
 /* Topic Index Page */
-.topics-index-page, .root-page, .categories-show-page, .users-drafts-page, .topics-tags-page, .users-privateTopic-page{
+.topics-index-page, 
+.root-page,
+.categories-show-page, 
+.users-drafts-page, 
+.topics-tags-page, 
+.users-privateTopic-page, 
+.im-page {
   .topic-list {
     .nav>li>a {
       position: relative;
@@ -189,4 +195,49 @@ body {
 
 .fa-clipboard::before {
     color: #bd9393;
+}
+
+#message-body {
+    width: 80%;    
+    .im-app {
+        max-height: calc(50vh);
+        overflow-y: auto;
+    }
+
+    .show-message {
+        /*width: 500px;*/
+        margin: 0 auto;
+        border-top: 2px solid;
+        padding-top: 15px;
+    }
+    
+    .sendbutton {
+        position: fixed;
+        bottom: 100px !important;
+        right: 50px !important;
+        z-index: 100;
+    }
+    
+    .message-text-rece {
+        border: solid;
+        border-radius: 10px;
+        background: #efefef;
+        min-height: 25px;
+        padding: 9px 10px;
+        align-items: center;
+        color:#bd9393;
+        float:right;
+        margin-top: 10px;
+    }
+
+    .message-text {
+        border: solid;
+        border-radius: 10px;
+        background: #efefef;
+        min-height: 25px;
+        padding: 9px 10px;
+        align-items: center;
+        color:#8fd7d8;
+        margin-top: 10px;
+    }
 }
