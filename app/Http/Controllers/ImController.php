@@ -12,14 +12,15 @@ class ImController extends Controller
     {
         $user = \Auth::user();
         $accid = $user->accid;
-        $users = \App\Models\User::all();
+        $query = \App\Models\User::where('accid','<>','')->where('id','<>',$user->id)->orderBy('id');
 
-        //$users = \App\Models\User::Where('accid','<>','')->pluck('accid');
-        //$im = new App\Services\IMService();
-        //$res = $im->getOnlineStatus($users->toArray());
-        //dd($res);
-        $users = $users->except([$user->id]);
-        return view('im.index',compact('accid','users'));
+        $users = $query->pluck('name');
+        $accids = $query->pluck('accid');
+
+        $im = new \App\Services\IMService();
+        $res = $im->getOnlineStatus($accids->toArray());
+        $res = $users->combine($res);
+        return view('im.index',compact('res','accid'));
     }
 
     public function getUserSig()
@@ -27,5 +28,13 @@ class ImController extends Controller
         $im = new IMService();
         $user = \Auth::user();
         return ['status' => 200, 'usersig' => $im->genUserSig($user->accid)];
+    }
+
+    public function getUserStatus(Request $request)
+    {
+        $accid = $request->accid;
+        $im = new \App\Services\IMService();
+        $res = $im->getOnlineStatus(explode(' ', $accid));
+        return ['status' => 200, 'online' => $res[0]['Status']];
     }
 }

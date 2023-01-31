@@ -28,6 +28,7 @@ Route::middleware(['auth'])->group(function() {
 
     Route::get('im','ImController@index')->name('im');
     Route::get('get-user-sig', 'ImController@getUserSig');
+    Route::get('get-user-status', 'ImController@getUserStatus');
 });
 
 Route::get('/', 'TopicsController@index')->name('root');

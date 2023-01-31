@@ -64,7 +64,7 @@ class IMService
             'To_Account' => $user_ids,
         ]);
         if ($response['ErrorCode'] == 0)
-            return ['QueryResult' => $response['QueryResult']];
+            return $response['QueryResult'];
     }
 
     protected function _http($url, $body)

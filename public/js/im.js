@@ -88,10 +88,20 @@ $('#select_user').click(function(){
     if(user_id){
         let user_name = $('#select_user').find("option:selected").text();;
         console.log('xxx' + user_name);
-
+        axios.get('/get-user-status?accid=' + user_id)
+            .then(function(response){
+                $('#online-status').css('display', 'block'); 
+                if(response.data.online != 'Online'){
+                   $('#online-status span').text(user_name + ' [离线]'); 
+                }else{
+                   $('#online-status span').text(user_name + ' [在线]'); 
+                }
+            });
         show_im(user_name);
         $('.sendbutton').css('display', 'block');
         $('#footer').css('display', 'none');
         //$(this).css('display', 'none');
+    }else{
+        $('#online-status').css('display', 'none'); 
     }
 });

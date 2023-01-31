@@ -8,12 +8,14 @@
         </div>
         <select name="" id="select_user" class="form-select form-select-lg mb-3" aria-label="Default select example">
             <option value="">请选择对话用户 ^_^ </option>
-            @foreach ($users as $user)
-                <option value="{{$user->accid}}">{{$user->name}}</option>
+            @foreach ($res as $key => $item)
+                <option lable="{{$item['Status']}}" value="{{$item['To_Account']}}">{{$key}}</option>
             @endforeach
         </select>
         <br />
         <br />
+        <label id="online-status"><span class="badge rounded-pill text-bg-info"></span></label>
+        <br>
         <div class="im-app" id="im-app">
         </div>
         <div class="sendbutton" style="display: none;">
