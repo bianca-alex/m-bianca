@@ -34,6 +34,7 @@
     @include('layouts._footer')
   </div>
 
+  @yield('styles')
   <!-- Scripts -->
   <script src="{{ mix('js/app.js') }}"></script>
 

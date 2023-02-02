@@ -96,12 +96,15 @@ $('#select_user').click(function(){
                 }else{
                    $('#online-status span').text(user_name + ' [在线]'); 
                 }
+                $('#im-message-href').css('display', 'block');
+                $('#im-message-href').html('<a style="text-decoration: none; outline: none; color: #000;" target="_blank" href="/messages?accid=' + user_id + '&user_name=' +user_name + '">查看最近的聊天记录</a>');
             });
         show_im(user_name);
         $('.sendbutton').css('display', 'block');
         $('#footer').css('display', 'none');
         //$(this).css('display', 'none');
     }else{
+        $('#im-message-href').css('display', 'none');
         $('#online-status').css('display', 'none'); 
     }
 });

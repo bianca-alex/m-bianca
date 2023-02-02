@@ -43,13 +43,13 @@ class IMService
                            . '&identifier=' . $this->_admin . '&usersig=' . $admin_sig . '&random=' . random_int(1, 9999) . '&contenttype=json';
 
         $response = $this->_http($url, [
-            'Identifier' => $accid,
+            'Identifier' => $prefix . $accid,
             'Nick' => $user_name,
             'FaceUrl' => $avatar,
         ]);
 
         if ($response['ErrorCode'] == 0)
-            return ['accid' => $accid, 'user_name' => $user_name, 'avatar' => $avatar];
+            return ['accid' => $prefix . $accid, 'user_name' => $user_name, 'avatar' => $avatar];
 
         return ['status' => 400,'message' => 'Im注册失败'];
     }
@@ -65,6 +65,33 @@ class IMService
         ]);
         if ($response['ErrorCode'] == 0)
             return $response['QueryResult'];
+    }
+
+
+    public function getMessage($from, $to, $start_time, $end_time, $end_flag = '', $res = [])
+    {
+        $admin_sig = $this->genUserSig($this->_admin);
+        $url = $this->_url . 'openim/admin_getroammsg?sdkappid=' . $this->_app_key
+                           . '&identifier=' . $this->_admin . '&usersig=' . $admin_sig . '&random=' . random_int(1, 9999) . '&contenttype=json';
+        $response = $this->_http($url, [
+            'Operator_Account' => $from,
+            'Peer_Account' => $to,
+            'MaxCnt' => 50,
+            'MinTime' => $start_time,
+            'MaxTime' => $end_time,
+            'LastMsgKey' => $end_flag,
+        ]);
+
+        // 只显示100条
+        return $response['MsgList'];
+
+        // 显示全部
+        /*array_unshift($res, $response['MsgList']);
+        if($response['ErrorCode'] == 0 && $response['Complete'] == 0){
+            return $this->getMessage($from, $to, $start_time, $response['LastMsgTime'], $response['LastMsgKey'], $res); 
+        }else{
+            return $res;
+        }*/
     }
 
     protected function _http($url, $body)

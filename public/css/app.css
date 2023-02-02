@@ -21361,6 +21361,7 @@ body {
 .users-drafts-page .topic-list .nav > li > a,
 .topics-tags-page .topic-list .nav > li > a,
 .users-privateTopic-page .topic-list .nav > li > a,
+.im-message-page .topic-list .nav > li > a,
 .im-page .topic-list .nav > li > a {
   position: relative;
   display: block;
@@ -21373,6 +21374,7 @@ body {
 .users-drafts-page .topic-list a,
 .topics-tags-page .topic-list a,
 .users-privateTopic-page .topic-list a,
+.im-message-page .topic-list a,
 .im-page .topic-list a {
   color: #444444;
   text-decoration: none;
@@ -21383,6 +21385,7 @@ body {
 .users-drafts-page .topic-list .meta,
 .topics-tags-page .topic-list .meta,
 .users-privateTopic-page .topic-list .meta,
+.im-message-page .topic-list .meta,
 .im-page .topic-list .meta {
   font-size: 0.9em;
   color: #b3b3b3;
@@ -21393,6 +21396,7 @@ body {
 .users-drafts-page .topic-list .meta a,
 .topics-tags-page .topic-list .meta a,
 .users-privateTopic-page .topic-list .meta a,
+.im-message-page .topic-list .meta a,
 .im-page .topic-list .meta a {
   color: #b3b3b3;
 }
@@ -21402,6 +21406,7 @@ body {
 .users-drafts-page .topic-list .badge,
 .topics-tags-page .topic-list .badge,
 .users-privateTopic-page .topic-list .badge,
+.im-message-page .topic-list .badge,
 .im-page .topic-list .badge {
   background-color: #d8d8d8 !important;
 }
@@ -21411,6 +21416,7 @@ body {
 .users-drafts-page .topic-list hr,
 .topics-tags-page .topic-list hr,
 .users-privateTopic-page .topic-list hr,
+.im-message-page .topic-list hr,
 .im-page .topic-list hr {
   margin-top: 12px;
   margin-bottom: 12px;

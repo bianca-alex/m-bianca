@@ -15,6 +15,7 @@
         <br />
         <br />
         <label id="online-status"><span class="badge rounded-pill text-bg-info"></span></label>
+        <span id="im-message-href" class="badge text-bg-info"></span>
         <br>
         <div class="im-app" id="im-app">
         </div>

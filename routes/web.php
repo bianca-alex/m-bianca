@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('im','ImController@index')->name('im');
     Route::get('get-user-sig', 'ImController@getUserSig');
     Route::get('get-user-status', 'ImController@getUserStatus');
+    Route::get('messages', 'ImController@messages')->name('im-message');
 });
 
 Route::get('/', 'TopicsController@index')->name('root');
@@ -45,4 +46,8 @@ Route::post('login', 'Auth\LoginController@login')->middleware('create.accid');
 Route::get('/test-socket', function () {
     event(new \App\Events\ChatEvent('Say Hello')); // 触发一下即可
     return view('welcome');
+});
+
+Route::any('im/im-callback',function(Request $request){
+    \Log::info('im request====' . json_encode(\Request::all()));
 });
