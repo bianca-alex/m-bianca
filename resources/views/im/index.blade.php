@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title', 'IM')
 @section('content')
+<div id="spinner-border" class="spinner-border text-warning"></div>
     <div id="message-body" style="display: none;">
         <div class="alert alert-success alert-dismissible" id="popup-message" style="display:none;">
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -33,6 +34,7 @@
                 let promise = tim.login({userID: '{{$accid}}', userSig: ' ' + response.data.usersig});
                 promise.then(function(imResponse) {
                     console.log(imResponse.data); // 登录成功
+                    $('#spinner-border').css('display','none');
                     $('#message-body').css('display','block');
                     if (imResponse.data.repeatLogin === true) {
                         // 标识帐号已登录，本次登录操作为重复登录。v2.5.1 起支持

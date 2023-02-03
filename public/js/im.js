@@ -20,6 +20,7 @@ function received_message()
                           </div>`;
                     $('#im-app').append(ele);
                     $('#popup-message strong').text(message.nick + '上线啦~  Say: ' + message.payload.text);
+                    $('#online-status span').text(message.nick + ' [在线]'); 
                     $('#popup-message').css('display', 'block');
                 }
                 $('#im-body-' +message.nick + ' .show').append('<label class="message-text-rece"><b>' + message.payload.text + '</b></label><br /><br /><br />');
@@ -51,6 +52,7 @@ function send_user(user_id, user_name, mess)
         $('#im-body-' +user_name+ ' .show').append('<label class="message-text"><b>' + imResponse.data.message.payload.text + '</b></label><br />');
         height = $('#im-app').prop("scrollHeight")
         $('#im-app').scrollTop(height);
+        $('#message').val('');
     }).catch(function(imError) {
         // 发送失败
         // console.warn('sendMessage error:', imError);
@@ -76,14 +78,9 @@ function show_im(user_name)
     $('#im-body-'+user_name).css('display', 'block');
 }
 
-$('#send').click(function(){
-    let user_id = $('#select_user').val();
-    let user_name = $('#select_user').find("option:selected").text();;
-    let mess = $('#message').val()
-    send_user(user_id, user_name, mess);
-});
 
-$('#select_user').click(function(){
+function show_body()
+{
     let user_id = $('#select_user').val();
     if(user_id){
         let user_name = $('#select_user').find("option:selected").text();;
@@ -107,4 +104,25 @@ $('#select_user').click(function(){
         $('#im-message-href').css('display', 'none');
         $('#online-status').css('display', 'none'); 
     }
+
+}
+
+$('#send').click(function(){
+    let user_id = $('#select_user').val();
+    let user_name = $('#select_user').find("option:selected").text();;
+    let mess = $('#message').val()
+    send_user(user_id, user_name, mess);
+});
+
+$('#message').keydown(function(event){
+    if(event.keyCode == 13){
+        let user_id = $('#select_user').val();
+        let user_name = $('#select_user').find("option:selected").text();;
+        let mess = $('#message').val()
+        send_user(user_id, user_name, mess);
+    }
+});
+
+$('#select_user').click(function(){
+    show_body();
 });
