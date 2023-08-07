@@ -5,6 +5,7 @@
     @else
     <p class="text-justify"><a href="{{ route('subscribe.index') }}"><i class="fa fa-bolt" aria-hidden="true"></i> 订阅</a></p>
     <p class="text-justify"><a href="{{ route('im') }}"><i class="fa fa-bolt" aria-hidden="true"></i> 在线聊天</a></p>
+    <p class="text-justify"><a href="{{ route('file.list') }}"><i class="fa fa-bolt" aria-hidden="true"></i> 文件上传</a></p>
     @endguest
     <p class="text-justify"></p>
   </div>
